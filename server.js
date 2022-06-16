@@ -1,5 +1,5 @@
 
-//IMPORTAMOS LAS FUNVIONES
+//IMPORTAMOS LAS FUNCIONES
 const funciones = require("./funciones/funciones.js");
 
 //CONEXION CON SQL esto está tambien en FUNCIONES.JS
@@ -21,7 +21,7 @@ const mongo = require('mongodb');
 const funciones1 = require("./funciones/funciones.js");
 const MongoClient = mongo.MongoClient;
 const mydb = "planetExpressMongo";
-// const coleccion = "Libros";
+
 
 const url = "mongodb://localhost:27017/";
 
