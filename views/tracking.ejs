@@ -6,12 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mapa.css">
     <title>Tracking</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
         rel="stylesheet">
+    <!-- Link Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <!-- Script Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 </head>
 
 <body>
@@ -70,6 +79,10 @@
                     <div class="enviar">
                         <button type="submit" class="boton">Enviar</button>
                         <br><br>
+
+
+
+
                     </div>
 
             </div>
@@ -77,7 +90,15 @@
         </form>
 
     </main>
+    <section >
 
+		<!-- <div class="searchMap">
+			<input type="text" id="cityName">
+			<button onclick="searchCity();">Buscar Ciudad</button>
+		</div> -->
+		<div id="map"></div>
+
+	</section>
     <footer class="footer-distributed">
 
         <div class="footer-left">
@@ -132,6 +153,7 @@
             </p>
         </div>
     </footer>
+    <script src="mapa.js"></script>
 </body>
 
 </html>
