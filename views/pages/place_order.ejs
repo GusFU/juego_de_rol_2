@@ -2,16 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>PLACE AN ORDER</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
-        rel="stylesheet">
+    <%- include('../partials/head.ejs'); %>
 </head>
 
 <body>
@@ -171,7 +162,7 @@
 
     </main>
 
-    <footer class="footer-distributed">
+   <!--  <footer class="footer-distributed">
 
         <div class="footer-left">
 
@@ -224,7 +215,12 @@
                 Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
             </p>
         </div>
-    </footer>
+    </footer> -->
+
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
 </body>
 
 </html>

@@ -35,36 +35,36 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //ENRUTAMIENTOS MEDIANTE METODO GET
 
 app.get('/', function (req, res) {
-    res.render('landingPage');
+    res.render('./pages/landingPage');
 });
 
 app.get('/landingPage', urlencodedParser, (req, res) => {
-    res.render('landingPage');
+    res.render('./pages/landingPage');
 });
 
 
 app.get('/login', urlencodedParser, (req, res) => {
-    res.render('login');
+    res.render('./pages/login');
 });
 
 app.get('/registro', urlencodedParser, (req, res) => {
-    res.render('registro');
+    res.render('./pages/registro');
 });
 
 app.get('/place_order', urlencodedParser, (req, res) => {
-    res.render('place_order');
+    res.render('./pages/place_order');
 });
 
 app.get('/pago', urlencodedParser, (req, res) => {
-    res.render('pago');
+    res.render('./pages/pago');
 });
 
 app.get('/tracking', urlencodedParser, (req, res) => {
-    res.render('tracking');
+    res.render('./pages/tracking');
 });
 
 app.get('/contact', urlencodedParser, (req, res) => {
-    res.render('contact');
+    res.render('./pages/contact');
 });
 
 //ENRUTAMIENTOS MEDIANTE METODO POST
@@ -81,12 +81,12 @@ app.post('/login', urlencodedParser, (req, res) => {
 
         if (comprobacion) {
             connection.end();
-            res.render('profile');
+            res.render('./pages/profile');
 
         } else {
 
 
-            res.render('login')
+            res.render('./pages/login')
         }
 
  

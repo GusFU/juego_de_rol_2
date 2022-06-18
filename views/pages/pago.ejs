@@ -2,25 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mapa.css">
-    <title>Tracking</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
-        rel="stylesheet">
-    <!-- Link Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <!-- Script Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+    <%- include('../partials/head.ejs'); %>
 </head>
 
 <body>
@@ -43,9 +25,7 @@
                 <div class="place_order">
                     <a href="./place_order"><b>Place an order</b></a>
                 </div>
-                <div class="payment">
-                    <a href="./payment"><b>Payment</b></a>
-                </div>
+
                 <div class="tracking">
                     <a href="./tracking"><b>Tracking</b></a>
                 </div>
@@ -61,45 +41,48 @@
 
 
     <main>
-        <form action="/orders" method="POST">
-            <div class="formulario">
-                <fieldset id="formularioM">
-                    <legend>TRACKING</legend>
-
-                    <div class="contenedor-campos">
-
-
-                        <div class="campo">
-                            <label>Número de Tracking</label>
-                            <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
-                        </div>
-
-
+        <form action="/profile" method="POST">
+            <div class="contenedor-tarjeta">
+                <div class="datosTarjeta" id="datosCredito">
+                    <div class="titularTarjeta">
+                        <label>Titular de la tarjeta</label>
+                        <input id="titTarjeta" placeholder="Nombre y apellidos">
+    
                     </div>
-                    <div class="enviar">
-                        <button type="submit" class="boton">Enviar</button>
-                        <br><br>
-
-
-
-
+                    <div class="numTarjeta">
+                        <label>Número de tarjeta</label>
+                        <input id="numeroTarjeta" placeholder="Debe contener 16 dígitos">
                     </div>
-
+    
+                    <div class="caducidad">
+                        <label>Fecha de caducidad</label>
+                        <input id="cadTarjeta" placeholder="01-01">
+                    </div>
+    
+                    <div class="codigo">
+                        <label>CVV</label>
+                        <input id="cvv" placeholder="111">
+                    </div>
+    
+                    <div class="pagar">
+                        <button id="btn" class="boton">Proceder al pago</button>
+                    </div>
+    
+                </div>
+                <div class="avisoTimeD" id="avisoPreloader" hidden>
+                    <p>Comprobando datos de pago con su identidad bancaria</p>
+                    <br>
+                    <div class="preloader"></div>
+                </div>
             </div>
-            </fieldset>
         </form>
-
     </main>
-    <section >
 
-		<!-- <div class="searchMap">
-			<input type="text" id="cityName">
-			<button onclick="searchCity();">Buscar Ciudad</button>
-		</div> -->
-		<div id="map"></div>
 
-	</section>
-    <footer class="footer-distributed">
+
+
+
+ 
 
         <div class="footer-left">
 
@@ -112,7 +95,7 @@
 
                 <a href="./place_order">Place an order</a>
 
-                <a href="./payment">Payment</a>
+                <a href="./pago">Payment</a>
 
                 <a href="./tracking">Tracking</a>
 
@@ -152,8 +135,20 @@
                 Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
             </p>
         </div>
-    </footer>
-    <script src="mapa.js"></script>
+    </footer> -->
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+

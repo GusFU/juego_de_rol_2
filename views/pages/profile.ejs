@@ -2,16 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Contact</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
-        rel="stylesheet">
+    <%- include('../partials/head.ejs'); %>
 </head>
 
 <body>
@@ -52,58 +43,10 @@
 
 
     <main>
-        <form action="/gracias" method="POST">
-            <div class="formulario" id="form">
-                <legend>Contáctame que te pasa</legend>
-
-                <div class="contenedor-campos">
-
-                    <div class="campo">
-                        <label>Nombre</label>
-                        <input id="name" placeholder="Inserte su nombre aquí" required>
-                    </div>
-
-                    <div class="campo">
-                        <label>Apellidos</label>
-                        <input id="lastname" placeholder="Inserte sus apellidos aquí" required>
-                    </div>
-
-                    <div class="campo">
-                        <label>Correo</label>
-                        <input id="mail" type="mail" placeholder="Inserte su dirección de correo electrónico aquí"
-                            required>
-                    </div>
-
-                    <div class="campo">
-                        <label>Teléfono</label>
-                        <input id="tel" placeholder="Inserte su teléfono aquí" required>
-                    </div>
-
-                    <div class="campo">
-                        <label>Mensaje</label>
-                        <textarea></textarea>
-                    </div>
-
-                </div>
-
-                <div class="enviar">
-                    <input type="submit" id="enviar"  value="Enviar">
-                    </button>
-                </div>
-        </form>
-
-
-
-
-
+ <p>PROFILE<P>
     </main>
 
-
-
-
-
-
-    <footer class="footer-distributed">
+   <!--  <footer class="footer-distributed">
 
         <div class="footer-left">
 
@@ -156,8 +99,12 @@
                 Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
             </p>
         </div>
-    </footer>
+    </footer> -->
+
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
 </body>
 
 </html>
-

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Thanks</title>
+    <title>Contact</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -44,77 +44,70 @@
                     <a href="./contact"><b>Contact</b></a>
                 </div>
                 <div class="welcome">
-                    <a href="./welcome" id="name"><b>Welcome</b></a>
+                    <a href="./welcome" id="nameD"><b>Welcome</b></a>
                     <a id="disconnectD" href="" onclick="desconectarD();"><b>Disconnect</b></a>
                 </div>
             </nav>
     </header>
-<main>
 
-    <div class="cajaGracias">
-        Muchas gracias por ponerse en contacto con Planet Express ©<br>
-        Para nosotros es muy importante su opinión y agradecemos sus comentarios<br>
-            En la mayor brevedad posible nos pondremos en contacto.<br>
-            Un cordial saludo de parte de todo el equipo.
-          
-      </div>
-   
-</main>
 
-<footer class="footer-distributed">
+    <main>
+        <form action="/gracias" method="POST">
+            <div class="formulario" id="form">
+                <legend>Contáctame que te pasa</legend>
 
-    <div class="footer-left">
+                <div class="contenedor-campos">
 
-        <p class="footer-links">
-            <a href="./landingPage" class="link-1">Home</a>
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input id="name" placeholder="Inserte su nombre aquí" required>
+                    </div>
 
-            <a href="./login">Login</a>
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input id="lastname" placeholder="Inserte sus apellidos aquí" required>
+                    </div>
 
-            <a href="./registro">Register</a>
+                    <div class="campo">
+                        <label>Correo</label>
+                        <input id="mail" type="mail" placeholder="Inserte su dirección de correo electrónico aquí"
+                            required>
+                    </div>
 
-            <a href="./place_order">Place an order</a>
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input id="tel" placeholder="Inserte su teléfono aquí" required>
+                    </div>
 
-            <a href="./payment">Payment</a>
+                    <div class="campo">
+                        <label>Mensaje</label>
+                        <textarea></textarea>
+                    </div>
 
-            <a href="./tracking">Tracking</a>
+                </div>
 
-            <a href="./contact">Contact</a>
+                <div class="enviar">
+                    <input type="submit" id="enviar"  value="Enviar">
+                    </button>
+                </div>
+        </form>
 
-            <a href="./history">History</a>
 
-        </p>
 
-        <p class="footer-company-name">Planet Express © 2022</p>
-    </div>
 
-    <div class="footer-center">
 
-        <div>
-            <i class="fa fa-map-marker"></i>
-            <p>Calle Copos nº4<br>
-                Galapagar, Madrid</p>
-        </div>
+    </main>
 
-        <div>
-            <i class="fa fa-phone"></i>
-            <p>+34 681090036</p>
-        </div>
 
-        <div>
-            <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@company.com">02sergioconde@gmail.com</a></p>
-        </div>
 
-    </div>
 
-    <div class="footer-right">
 
-        <p class="footer-company-about">
-            <span>About the company :</span>
-            Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
-        </p>
-    </div>
-</footer>
+
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
 </body>
 
 </html>
+
