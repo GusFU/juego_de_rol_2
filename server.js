@@ -10,9 +10,12 @@ const connection = mysql.createConnection({
     password: 'root',
     database: 'Personas'
 });
+//variables
+var loginmal = true
 
 
-//express
+//express, pug, body parser
+const pug = require('pug');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -29,21 +32,34 @@ const url = "mongodb://localhost:27017/";
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
+
+
+
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //ENRUTAMIENTOS MEDIANTE METODO GET
 
 app.get('/', function (req, res) {
+<<<<<<< HEAD
     res.render('./pages/landingPage');
 });
 
 app.get('/landingPage', urlencodedParser, (req, res) => {
     res.render('./pages/landingPage');
+=======
+    res.render('./pages/landingPage.ejs');
+});
+
+app.get('/landingPage', urlencodedParser, (req, res) => {
+    res.render('./pages/landingPage.ejs');
+>>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
 });
 
 
 app.get('/login', urlencodedParser, (req, res) => {
+<<<<<<< HEAD
     res.render('./pages/login');
 });
 
@@ -65,13 +81,54 @@ app.get('/tracking', urlencodedParser, (req, res) => {
 
 app.get('/contact', urlencodedParser, (req, res) => {
     res.render('./pages/contact');
+=======
+    res.render('./pages/login.ejs');
 });
+
+app.get('/registro', urlencodedParser, (req, res) => {
+    res.render('./pages/registro.ejs');
+
+
+    
+});
+
+app.get('/place_order', urlencodedParser, (req, res) => {
+    res.render('./pages/place_order.ejs');
+});
+
+
+app.get('/tracking', urlencodedParser, (req, res) => {
+    res.render('./pages/tracking.ejs');
+});
+
+app.get('/contact', urlencodedParser, (req, res) => {
+    res.render('./pages/contact.ejs');
+>>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
+});
+
+app.get('/profile', (req, res) => {//este es con PUG
+    res.render('./pages/profile.pug'); // Se muestra la plantilla view.pug
+});
+
+app.get('/history', (req, res) => {//este es con PUG
+    res.render('./pages/history.pug'); // Se muestra la plantilla view.pug
+});
+
+
+app.get('/pago', urlencodedParser, (req, res) => {
+    res.render('./pages/pago.ejs');
+});
+
+
+
+
+
 
 //ENRUTAMIENTOS MEDIANTE METODO POST
 
 app.post('/login', urlencodedParser, (req, res) => {
-    
-    
+
+
     let query = 'SELECT * from Login';
     connection.query(query, async (err, rows) => {
         if (err) throw err;
@@ -81,20 +138,78 @@ app.post('/login', urlencodedParser, (req, res) => {
 
         if (comprobacion) {
             connection.end();
+<<<<<<< HEAD
             res.render('./pages/profile');
 
         } else {
 
 
             res.render('./pages/login')
+=======
+            res.render('/pages/profile.ejs');
+
+        } else {
+            // showPrompt("Escribe algo<br>...inteligente :)")
+           // var alerta="Esta mal el log"
+            res.render('/pages/login.ejs')
+>>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
         }
 
- 
+
 
     });
-   
+
 });
 
 
+
+
+
+app.post('/registro', urlencodedParser, (req, res) => {
+    let query = 'SELECT email from Usuarios';
+    connection.query(query, async (err, rows) => {
+        if (err) throw err;
+
+
+        let comprobacionreg = await funciones.registrar(req.body.dni1, req.body.email1, rows);
+
+        if (!comprobacionreg) {
+
+
+            let insertQuery = 'INSERT INTO Usuarios (id, nombre, dni,administrador, telefono, email, direccion1, direccion2, direccion3) VALUES (?)';
+            let query2 = mysql.format(insertQuery, ["Usuarios", "NULL", req.body.name1, req.body.dni1, false, req.body.telefono1, req.body.email1, req.body.direccion1, req.body.direccion2, req.body.direccion3]);
+
+            connection.query(query2, (err, response) => {
+                if (err) throw err;
+                console.log(response.insertId);
+                //connection.end();
+            });
+
+
+
+            connection.end();
+            res.render('./views/pages/profile.pug');
+
+        } else {
+
+
+            res.render('./views/pages/registro.ejs')
+        }
+
+
+
+    });
+
+});
+
+
+
+//PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG
+
+// Import the pug module
+// const pug = require('pug');
+
+// Compile the template (with the data not yet inserted)
+// const templateCompiler = pug.compileFile('view.pug');
 
 app.listen(3000);
