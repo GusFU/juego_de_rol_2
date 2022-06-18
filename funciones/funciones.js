@@ -14,30 +14,30 @@ const funciones1 = {
 }
 
 function registrar(dni, email, emails) {
-
+let corresponde= false
     let letra = dni[8].toUpperCase();
     let serie = 'TRWAGMYFPDXBNJZSQVHLCKET';
     if (serie[Number(dni.substring(0, 8)) % 23] == letra) {
-        let corresponde = true;
-    }
+        corresponde = true;
+        var cont = 0
 
-    if (corresponde) {
+        if (corresponde) {
 
-        while (corresponde) {
-            if (email == emails[cont]) {
+            while (corresponde) {
+                if (email == emails[cont]) {
 
-                return (email == emails[cont])
-            } else {
-                cont++
+                    return (email == emails[cont])
+                } else {
+                    cont++
+                }
+                corresponde = corresponde && (email == emails[cont])
             }
-            corresponde = corresponde && (email == emails[cont])
-        }
 
-    } else {
-        return false;
+        } else {
+            return false;
+        }
     }
 }
-
 
 
 
