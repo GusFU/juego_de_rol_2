@@ -1,5 +1,5 @@
 
-//IMPORTAMOS LAS FUNCIONES
+//IMPORTAMOS EL ARCHIVO QUE COINTIENE LAS FUNCIONES
 const funciones = require("./funciones/funciones.js");
 
 //CONEXION CON SQL esto está tambien en FUNCIONES.JS
@@ -12,8 +12,12 @@ const connection = mysql.createConnection({
 });
 //variables
 var loginmal = true
-
-
+var login3;
+var datosEnvioOrigen;
+var datosEnvioDestino;
+var datosPaquete;
+var datosPago;
+var importe = 0;
 //express, pug, body parser
 const pug = require('pug');
 const express = require('express');
@@ -28,7 +32,7 @@ const mydb = "planetExpressMongo";
 
 const url = "mongodb://localhost:27017/";
 
-// dónde cargar los archivos estáticos
+// dónde cargar los archivos estáticos PARA HACER css, mapa...
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
@@ -37,9 +41,10 @@ app.set('view engine', 'pug');
 
 
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false }) //para coger elementos de req.body...
 
 //ENRUTAMIENTOS MEDIANTE METODO GET
+//para redireccionar de un enlace a otro enpoint.
 
 app.get('/', function (req, res) {
     res.render('./pages/landingPage.ejs');
@@ -57,8 +62,6 @@ app.get('/login', urlencodedParser, (req, res) => {
 app.get('/registro', urlencodedParser, (req, res) => {
     res.render('./pages/registro.ejs');
 
-
-    
 });
 
 app.get('/place_order', urlencodedParser, (req, res) => {
@@ -92,7 +95,8 @@ app.get('/pago', urlencodedParser, (req, res) => {
 
 
 
-//ENRUTAMIENTOS MEDIANTE METODO POST
+//ENRUTAMIENTOS MEDIANTE METODO POST hemos puesto aqui post porque los datos son sensibles.
+//No solamente redirecciona, sino que se aplica un cambio
 
 app.post('/login', urlencodedParser, (req, res) => {
 
@@ -105,16 +109,30 @@ app.post('/login', urlencodedParser, (req, res) => {
         let comprobacion = await funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, rows);
 
         if (comprobacion) {
+
+
+            let query = "SELECT * from Usuarios";
+
+            connection.query(query, async (err, rows) => {
+                if (err) throw err;
+
+                await funciones.todoUsuario(req.body.emailus, rows)
+                let cont = funciones.todoUsuario(req.body.emailus, rows)
+
+
+                login3 = await rows[cont]
+
+            });
+
             connection.end();
-            res.render('./pages/profile.ejs');
+            res.render('./pages/profile.pug');
+
 
         } else {
             // showPrompt("Escribe algo<br>...inteligente :)")
-           // var alerta="Esta mal el log"
+            // var alerta="Esta mal el log"
             res.render('./pages/login.ejs')
         }
-
-
 
     });
 
@@ -135,26 +153,28 @@ app.post('/registro', urlencodedParser, (req, res) => {
         if (!comprobacionreg) {
 
 
-            let insertQuery = 'INSERT INTO Usuarios (id, nombre, dni,administrador, telefono, email, direccion1, direccion2, direccion3) VALUES (?)';
-            let query2 = mysql.format(insertQuery, ["Usuarios", "NULL", req.body.name1, req.body.dni1, false, req.body.telefono1, req.body.email1, req.body.direccion1, req.body.direccion2, req.body.direccion3]);
+            let insertQuery = `INSERT INTO Usuarios  VALUES (NULL, '${req.body.name1}', '${req.body.dni1}', false,'${req.body.telefono1}', '${req.body.email1}', '${req.body.direccion1}', '${req.body.direccion2}', '${req.body.direccion3}')`;
+            /*             INSERT INTO tabla VALUES(valor1, valor2...valorN)
+                        INSERT INTO clientes VALUES(NULL, 'Pedro Pérez'...); */
+            // var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
 
-            connection.query(query2, (err, response) => {
+            console.log(insertQuery);
+
+            connection.query(insertQuery, (err, response) => {
                 if (err) throw err;
                 console.log(response.insertId);
                 //connection.end();
             });
 
 
-
             connection.end();
-            res.render('./views/pages/profile.pug');
+            res.render('./pages/login.ejs');
 
         } else {
 
 
-            res.render('./views/pages/registro.ejs')
+            res.render('./pages/registro.ejs')
         }
-
 
 
     });
@@ -162,13 +182,74 @@ app.post('/registro', urlencodedParser, (req, res) => {
 });
 
 
+app.post('/place_order', urlencodedParser, (req, res) => {
 
-//PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG PUG
 
-// Import the pug module
-// const pug = require('pug');
+    //coge los datos inputs del formulario de origen
+    datosEnvioOrigen = {
+        "nombre": `${login3.nombre}`,
+        "dni": `${login3.dni}`,
+        "telefono": `${login3.telefono}`,
+        "email": `${login3.email}`,
+        "direccion": `${req.body.direccionOrigen}`,
+        "cp": `${req.body.codigoPostal}`
+    };
 
-// Compile the template (with the data not yet inserted)
-// const templateCompiler = pug.compileFile('view.pug');
+    //coge los datos inputs del formulario de destino
+
+    datosEnvioDestino = {
+        "nombre": `${req.body.nombreDestino}`,
+        "telefono": `${req.body.telefonoDestino}`,
+        "dni": `${login3.dni}`,
+        "direccion": `${req.body.direccionDestino}`,
+        "cp": `${req.body.codigoPostalDestino}`
+    };
+
+
+    datosPaquete = {
+        "peso": `${req.body.peso}`,
+        "alto": `${req.body.alto}`,
+        "largo": `${req.body.largo}`,
+        "ancho": `${req.body.ancho}`
+    }
+
+
+    importe = funciones.precio(req.body.peso, req.body.alto, req.body.largo, req.body.ancho);
+
+    //valor es el nombre de la clave del JSON
+    res.render('./pages/pago.ejs', { valor: ` ${importe} €` })
+});
+
+
+
+//PAGO, al darle a pagar tiene que insertarse en la BBDD de SQL.
+//El numero de targeta 
+app.post('/pago', urlencodedParser, (req, res) => {
+
+    datosPago = {
+        "tituTarjeta": `${req.body.ntituTarjeta}`,
+        "numTarjeta": `${req.body.numTarjeta}`,
+        "cadTarjeta": `${req.body.cadTarjeta}`,
+        "cvv": `${req.body.cvv}`
+
+    }
+
+    let insertQuery = 'INSERT INTO ?? (??) VALUES (?)';
+    let query2 = mysql.format(insertQuery, ["tarjetas", "campoTexto", "Añadido desde Node"]);
+    //  var query2 = "INSERT INTO customers (tarjetas, address) VALUES ('Company Inc', 'copos 37')";
+    connection.query(query2, (err, response) => {
+        if (err) throw err;
+        console.log(response.insertId);
+        //connection.end();
+    });
+
+
+
+
+    res.render('./pages/profile.pug')
+
+});
+
+
 
 app.listen(3000);
