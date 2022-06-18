@@ -21,6 +21,9 @@ const mongo = require('mongodb');
 const funciones1 = require("./funciones/funciones.js");
 const MongoClient = mongo.MongoClient;
 const mydb = "planetExpressMongo";
+const pug = require('pug');
+const templateCompiler = pug.compileFile('./views/login.pug');
+
 
 
 const url = "mongodb://localhost:27017/";
@@ -29,49 +32,50 @@ const url = "mongodb://localhost:27017/";
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //ENRUTAMIENTOS MEDIANTE METODO GET
 
 app.get('/', function (req, res) {
-    res.render('landingPage');
+    res.render('landingPage.ejs');
 });
 
 app.get('/landingPage', urlencodedParser, (req, res) => {
-    res.render('landingPage');
+    res.render('landingPage.ejs');
 });
 
 
 app.get('/login', urlencodedParser, (req, res) => {
-    res.render('login');
+    res.render('login.ejs');
 });
 
 app.get('/registro', urlencodedParser, (req, res) => {
-    res.render('registro');
+    res.render('registro.ejs');
 });
 
 app.get('/place_order', urlencodedParser, (req, res) => {
-    res.render('place_order');
+    res.render('place_order.ejs');
 });
 
 app.get('/pago', urlencodedParser, (req, res) => {
-    res.render('pago');
+    res.render('pago.ejs');
 });
 
 app.get('/tracking', urlencodedParser, (req, res) => {
-    res.render('tracking');
+    res.render('tracking.ejs');
 });
 
 app.get('/contact', urlencodedParser, (req, res) => {
-    res.render('contact');
+    res.render('contact.ejs');
 });
 
 //ENRUTAMIENTOS MEDIANTE METODO POST
 
 app.post('/login', urlencodedParser, (req, res) => {
-    
-    
+
+
     let query = 'SELECT * from Login';
     connection.query(query, async (err, rows) => {
         if (err) throw err;
@@ -85,14 +89,15 @@ app.post('/login', urlencodedParser, (req, res) => {
 
         } else {
 
+            var fallo = 'Usuario o contraseña erróneos' 
 
-            res.render('login')
+            res.render('loginMal.ejs', { mensaje: fallo })
         }
 
- 
+
 
     });
-   
+
 });
 
 
