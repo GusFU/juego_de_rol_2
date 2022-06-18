@@ -1,35 +1,41 @@
+/**
+   *@Gustavo
+   *@Sergio
+   *@JoseLuis
+   *@YannPoirot 
+  */
 
+//En este archivo js  van a estar las funciones que usaremos en el resto de la aplicacion exportandolas con module.exports = funciones1;
 const funciones1 = {
-    registrar: registrar,
-    confirmarLogin: confirmarLogin
+    registrar: registrar, //separarlos por comas
+    confirmarLogin: confirmarLogin,
+    todoUsuario: todoUsuario,
+    precio: precio
 }
 
-function registrar(dni,email,emails) {
-   
+function registrar(dni, email, emails) {
 
-
-        
-        let letra = dni[8].toUpperCase();
-            let serie = 'TRWAGMYFPDXBNJZSQVHLCKET';
-            if (serie[Number(dni.substring(0, 8)) % 23] == letra) {
-              let corresponde=true;
-            }
-
-if (corresponde){
-   
-    while (corresponde) {
-        if (email == emails[cont] ) {
-
-            return (email == emails[cont])
-        } else {
-            cont++
-        }
-        corresponde = corresponde && (email == emails[cont])
+    let letra = dni[8].toUpperCase();
+    let serie = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    if (serie[Number(dni.substring(0, 8)) % 23] == letra) {
+        let corresponde = true;
     }
- 
-} else {
-    return false;
-}
+
+    if (corresponde) {
+
+        while (corresponde) {
+            if (email == emails[cont]) {
+
+                return (email == emails[cont])
+            } else {
+                cont++
+            }
+            corresponde = corresponde && (email == emails[cont])
+        }
+
+    } else {
+        return false;
+    }
 }
 
 
@@ -42,11 +48,12 @@ if (corresponde){
 function confirmarLogin(emailLogin, contrasenaLogin, rows) {
 
     // for (let i = 0; i < emailssql; i++) {
-    
+
     let cont = 0;
     let test = true;
-   
-    while (test) {
+
+    while (test) {//mientras test sea verdadero se hará todo lo que hay dentro.
+
         if ((emailLogin == rows[cont].email && contrasenaLogin == rows[cont].contrasena)) {
 
             return (emailLogin == rows[cont].email && contrasenaLogin == rows[cont].contrasena)
@@ -56,17 +63,34 @@ function confirmarLogin(emailLogin, contrasenaLogin, rows) {
         test = test && (emailLogin == rows[cont].email && contrasenaLogin == rows[cont].contrasena)
     }
 
-    //   return emailssql.indexOf(emailLogin) == contrasenassql.indexOf(contrasenaLogin)
-
-    // }
-
-
 
 
 }
 
+function todoUsuario(email, rows) {
+    let cont = 0;
+    let test = true;
+    while (test) {
 
-// Una forma para crear un JSON.
+        if (email == rows[cont].email) {
+
+            return cont
+        } else {
+            cont++
+        }
+        test = test && (email == rows[cont].email)
+    }
+
+}
+//calculo de precio de paquete
+function precio(peso, alto, largo, ancho) {
+    const precio1 = 2;
+    var volumen = alto * largo * ancho;
+    var precioTotal = precio1 * volumen * peso
+    return precioTotal
+}
+
+
 
 
 
