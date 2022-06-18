@@ -42,32 +42,40 @@
 
     <main>
         <form action="/profile" method="POST">
+
             <div class="contenedor-tarjeta">
                 <div class="datosTarjeta" id="datosCredito">
+                    <div>
+                        <p id="importePago"><b>
+                                Importe total:<br>
+                                <%= valor%>
+                            </b>
+                        </p>
+                    </div>
                     <div class="titularTarjeta">
                         <label>Titular de la tarjeta</label>
-                        <input id="titTarjeta" placeholder="Nombre y apellidos">
-    
+                        <input id="titTarjeta" name="tituTarjeta" placeholder="Nombre y apellidos">
+
                     </div>
                     <div class="numTarjeta">
                         <label>Número de tarjeta</label>
-                        <input id="numeroTarjeta" placeholder="Debe contener 16 dígitos">
+                        <input id="numeroTarjeta" name="numTarjeta" placeholder="Debe contener 16 dígitos">
                     </div>
-    
+
                     <div class="caducidad">
                         <label>Fecha de caducidad</label>
-                        <input id="cadTarjeta" placeholder="01-01">
+                        <input id="cadTarjeta" name="cadTarjeta" placeholder="01-01">
                     </div>
-    
+
                     <div class="codigo">
                         <label>CVV</label>
-                        <input id="cvv" placeholder="111">
+                        <input id="cod" name="cvv" placeholder="111">
                     </div>
-    
+
                     <div class="pagar">
                         <button id="btn" class="boton">Proceder al pago</button>
                     </div>
-    
+
                 </div>
                 <div class="avisoTimeD" id="avisoPreloader" hidden>
                     <p>Comprobando datos de pago con su identidad bancaria</p>
@@ -79,18 +87,10 @@
     </main>
 
     <footer class="footer-distributed">
-  
+
         <%- include('../partials/footer'); %>
-      </footer>
+    </footer>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-

@@ -28,6 +28,7 @@ body {
 
 .planetExpress {
   width: 30%;
+  max-width: 30rem;
 
 }
 
@@ -48,6 +49,12 @@ body {
   background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   border-radius: 0.5rem;
   border: solid 3px black;
+  max-height: 25rem;
+}
+
+.formulario_placeOrder{
+  display: flex;
+  flex-direction: wrap;
 }
 
 .Nombrelogo {
@@ -398,6 +405,9 @@ textarea {
   border: solid 3px black;
 }
 
+#importePago {
+  font-size: larger;
+}
 label {
   font-size: 2rem;
 }
