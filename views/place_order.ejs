@@ -29,23 +29,23 @@
                 </div>
 
                 <div class="register">
-                    <a href="./registro"><b>Register</b></a>
+                    <a href="./registro"><b>Registro</b></a>
                 </div>
                 <div class="place_order">
-                    <a href="./place_order"><b>Place an order</b></a>
+                    <a href="./place_order"><b>Haz un pedido</b></a>
                 </div>
-                <div class="payment">
-                    <a href="./payment"><b>Payment</b></a>
+                <div class="pago">
+                    <a href="./pago"><b>Pago</b></a>
                 </div>
                 <div class="tracking">
-                    <a href="./tracking"><b>Tracking</b></a>
+                    <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
                 <div class="contact">
-                    <a href="./contact"><b>Contact</b></a>
+                    <a href="./contact"><b>Contacto</b></a>
                 </div>
                 <div class="welcome">
-                    <a href="./welcome" id="nameD"><b>Welcome</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Disconnect</b></a>
+                    <a href="./welcome" id="nameD"><b>Bienvenido</b></a>
+                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
@@ -60,32 +60,44 @@
 
                     <div class="campo">
                         <label>Nombre</label>
-                        <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
+                        <input id="nombre_origen" type="text"
+                                pattern="(/^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)$/)"
+                                 placeholder="Introduce tu Nombre" required>
                     </div>
 
                     <div class="campo">
                         <label>Direccion</label>
-                        <input id="direccion_origen" type="text" placeholder="Introduce tu Dirección">
+                        <input id="direccion_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Dirección" required>
                     </div>
 
                     <div class="campo">
                         <label>Código Postal</label>
-                        <input id="codigoPostal_origen" type="text" placeholder="Introduce tu CP">
+                        <input id="codigoPostal_origen" type="text"
+                                pattern="(/(0[1-9]|5[0-2]|[0-4][0-9])[0-9]{3}/)"
+                                placeholder="Introduce tu CP" required>
                     </div>
 
                     <div class="campo">
                         <label>Pais</label>
-                        <input id="pais_origen" type="text" placeholder="Introduce tu Pais">
+                        <input id="pais_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Pais" required>
                     </div>
 
                     <div class="campo">
                         <label>Ciudad</label>
-                        <input id="ciudad_origen" type="text" placeholder="Introduce tu Ciudad">
+                        <input id="ciudad_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Ciudad" required>
                     </div>
 
                     <div class="campo">
                         <label>Municipio</label>
-                        <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
+                        <input id="nombre_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Nombre" required>
                     </div>
                 </div>
             </fieldset>
@@ -99,32 +111,44 @@
 
                     <div class="campo">
                         <label>Nombre</label>
-                        <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
+                        <input id="nombre_origen" type="text"
+                                pattern="(/^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)$/)"
+                                 placeholder="Introduce tu Nombre" required>
                     </div>
 
                     <div class="campo">
                         <label>Direccion</label>
-                        <input id="direccion_origen" type="text" placeholder="Introduce tu Dirección">
+                        <input id="direccion_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Dirección" required>
                     </div>
 
                     <div class="campo">
                         <label>Código Postal</label>
-                        <input id="codigoPostal_origen" type="text" placeholder="Introduce tu CP">
+                        <input id="codigoPostal_origen" type="text"
+                                pattern="(/(0[1-9]|5[0-2]|[0-4][0-9])[0-9]{3}/)"
+                                placeholder="Introduce tu CP" required>
                     </div>
 
                     <div class="campo">
                         <label>Pais</label>
-                        <input id="pais_origen" type="text" placeholder="Introduce tu Pais">
+                        <input id="pais_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Pais" required>
                     </div>
 
                     <div class="campo">
                         <label>Ciudad</label>
-                        <input id="ciudad_origen" type="text" placeholder="Introduce tu Ciudad">
+                        <input id="ciudad_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Ciudad" required>
                     </div>
 
                     <div class="campo">
                         <label>Municipio</label>
-                        <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
+                        <input id="nombre_origen" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu Nombre" required>
                     </div>
                 </div>
             </fieldset>
@@ -176,21 +200,21 @@
         <div class="footer-left">
 
             <p class="footer-links">
-                <a href="./landingPage" class="link-1">Home</a>
+                <a href="./landingPage">Home</a>
 
-                <a href="./login">Login</a>
+                <a href="./login">Inicio de sesión</a>
 
-                <a href="./registro">Register</a>
+                <a href="./registro">Registro</a>
 
-                <a href="./place_order">Place an order</a>
+                <a href="./place_order">Haz un pedido</a>
 
-                <a href="./payment">Payment</a>
+                <a href="./pago">Pago</a>
 
-                <a href="./tracking">Tracking</a>
+                <a href="./tracking">Seguimiento</a>
 
-                <a href="./contact">Contact</a>
+                <a href="./contact">Contacto</a>
 
-                <a href="./history">History</a>
+                <a href="./history">Historial</a>
 
             </p>
 

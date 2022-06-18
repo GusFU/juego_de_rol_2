@@ -90,12 +90,12 @@ body {
   font-size: 25px;
 }
 
-.payment {
+.pago {
   width: 20%;
   font-size: 20px;
 }
 
-.payment a:hover {
+.pago a:hover {
   color: white;
   font-size: 25px;
 }
@@ -375,7 +375,7 @@ textarea {
 /* PLACE AN ORDER */
 /* FIN PLACE AN ORDER */
 
-/* PAYMENT */
+/* PAGO */
 
 .contenedor-tarjeta {
   display: flex;
@@ -439,7 +439,7 @@ input {
   color: white;
 }
 
-/*   FIN PAYMENT */
+/*   FIN PAGO */
 
 /* TRACKING */
 

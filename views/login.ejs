@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
         rel="stylesheet">
+    <script src="/front/script.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                 <div class="planetExpress">
                     <img class="imgPlanet" src="logo.png" />
                 </div>
-
+                
                 <div class="Nombrelogo">
                     <p class="logo">
                         <span><strong>Planet Express</strong></span>
@@ -29,29 +30,31 @@
                 </div>
 
                 <div class="register">
-                    <a href="./registro"><b>Register</b></a>
+                    <a href="./registro"><b>Registro</b></a>
                 </div>
                 <div class="place_order">
-                    <a href="./place_order"><b>Place an order</b></a>
+                    <a href="./place_order"><b>Haz un pedido</b></a>
                 </div>
-                <div class="payment">
-                    <a href="./payment"><b>Payment</b></a>
+                <div class="pago">
+                    <a href="./pago"><b>Pago</b></a>
                 </div>
                 <div class="tracking">
-                    <a href="./tracking"><b>Tracking</b></a>
+                    <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
                 <div class="contact">
-                    <a href="./contact"><b>Contact</b></a>
+                    <a href="./contact"><b>Contacto</b></a>
                 </div>
                 <div class="welcome">
-                    <a href="./welcome" id="nameD"><b>Welcome</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Disconnect</b></a>
+                    <a href="./welcome" id="nameD"><b>Bienvenido</b></a>
+                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
 
 
     <main>
+        
+
         <form action="/login" method="POST">
             <div class="formulario">
                 <fieldset id="formularioM">
@@ -62,18 +65,22 @@
 
                         <div class="campo">
                             <label>Email</label>
-                            <input id="emailLoginS" type="email" placeholder="Introduce tu email" name="emailus">
+                            <input id="emailLoginS" type="email"
+                                pattern="(/^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$/))"
+                                placeholder="Introduce tu email" name="emailus">
                         </div>
 
                         <div class="campo">
                             <label>Contraseña</label>
-                            <input id="passwordLoginS" type="password" placeholder="Introduce tu contraseña" name="contrasenaus">
+                            <input id="passwordLoginS" type="password" placeholder="Introduce tu contraseña"
+                                name="contrasenaus">
                         </div>
 
 
                     </div>
                     <div class="enviar">
-                        <input type="submit" class="boton" value="Log In"></input>
+                        <input type="button" class="boton"  value="Log In" id="enviar1"></input>
+
                         <br><br>
                     </div>
 
@@ -93,21 +100,21 @@
         <div class="footer-left">
 
             <p class="footer-links">
-                <a href="./landingPage" class="link-1">Home</a>
+                <a href="./landingPage">Home</a>
 
-                <a href="./login">Login</a>
+                <a href="./login">Inicio de sesión</a>
 
-                <a href="./registro">Register</a>
+                <a href="./registro">Registro</a>
 
-                <a href="./place_order">Place an order</a>
+                <a href="./place_order">Haz un pedido</a>
 
-                <a href="./payment">Payment</a>
+                <a href="./pago">Pago</a>
 
-                <a href="./tracking">Tracking</a>
+                <a href="./tracking">Seguimiento</a>
 
-                <a href="./contact">Contact</a>
+                <a href="./contact">Contacto</a>
 
-                <a href="./history">History</a>
+                <a href="./history">Historial</a>
 
             </p>
 

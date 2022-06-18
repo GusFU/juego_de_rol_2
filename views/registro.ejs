@@ -29,29 +29,29 @@
                 </div>
 
                 <div class="login">
-                    <a href="./login"><b>Register</b></a>
+                    <a href="./login"><b>Inicio de sesion</b></a>
                 </div>
                 <div class="place_order">
-                    <a href="./place_order"><b>Place an order</b></a>
+                    <a href="./place_order"><b>Haz un pedido</b></a>
                 </div>
-                <div class="payment">
-                    <a href="./payment"><b>Payment</b></a>
+                <div class="pago">
+                    <a href="./pago"><b>Pago</b></a>
                 </div>
                 <div class="tracking">
-                    <a href="./tracking"><b>Tracking</b></a>
+                    <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
                 <div class="contact">
-                    <a href="./contact"><b>Contact</b></a>
+                    <a href="./contact"><b>Contacto</b></a>
                 </div>
                 <div class="welcome">
-                    <a href="./welcome" id="nameD"><b>Welcome</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Disconnect</b></a>
+                    <a href="./welcome" id="nameD"><b>Bienvenido</b></a>
+                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
 
     <main>
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
             <div class="formulario">
 
                 <legend>REGISTRO</legend>
@@ -62,12 +62,19 @@
                     <div class="campo">
                         <label>Nombre</label>
                         <input id="nombreRegistroS" type="text"
-                            placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde">
+                            pattern="(/^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)$/)"
+                            placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde"
+                            name="name1"
+                            required>
                     </div>
 
                     <div class="campo">
                         <label>DNI</label>
-                        <input id="DNIRegistroS" type="text" placeholder="Introduce tu DNI ej. 12345678A">
+                        <input id="DNIRegistroS" type="text" 
+                            pattern="(/^\d{8}[TRWAGMYFPDXBNJZSQVHLCKET]$/))"
+                            placeholder="Introduce tu DNI ej. 12345678A" 
+                            name="dni1"
+                            required>
                     </div>
 
 
@@ -76,28 +83,49 @@
 
                     <div class="campo">
                         <label>Teléfono</label>
-                        <input id="telefoRegistroS" type="tel" placeholder="Introduce tu Número ej. 681081123">
+                        <input id="telefoRegistroS" 
+                                type="tel"
+                                pattern="(/[0-9]{9}/)))"
+                                placeholder="Introduce tu Número ej. 681081123"
+                                name="telefono1"
+                                required>
                     </div>
 
 
                     <div class="campo">
                         <label>Email</label>
-                        <input id="emailRegistroS" type="email" placeholder="Introduce tu email">
+                        <input id="emailRegistroS" type="email"
+                                pattern="(/^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$/))"
+                                placeholder="Introduce tu email" 
+                                name="email1"
+                                required>
                     </div>
 
                     <div class="campo">
                         <label>Dirección 1</label>
-                        <input id="direccion1" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion1" type="text"
+                            pattern="([a-zA-Z0-9_])"
+                            placeholder="Introduce tu dirección"
+                            name="direccion1"
+                            required>
                     </div>
 
                     <div class="campo">
                         <label>Dirección 2</label>
-                        <input id="direccion2" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion2" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu dirección"
+                                name="direccion2"
+                                required>
                     </div>
 
                     <div class="campo">
                         <label>Dirección 3</label>
-                        <input id="direccion3" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion3" type="text"
+                                pattern="([a-zA-Z0-9_])"
+                                placeholder="Introduce tu dirección"
+                                name="direccion3"
+                                required>
                     </div>
 
                     <div class="enviar" id="mensajeErrorS">
@@ -115,21 +143,21 @@
         <div class="footer-left">
 
             <p class="footer-links">
-                <a href="./landingPage" class="link-1">Home</a>
+                <a href="./landingPage">Home</a>
 
-                <a href="./login">Login</a>
+                <a href="./login">Inicio de sesión</a>
 
-                <a href="./registro">Register</a>
+                <a href="./registro">Registro</a>
 
-                <a href="./place_order">Place an order</a>
+                <a href="./place_order">Haz un pedido</a>
 
-                <a href="./payment">Payment</a>
+                <a href="./pago">Pago</a>
 
-                <a href="./tracking">Tracking</a>
+                <a href="./tracking">Seguimiento</a>
 
-                <a href="./contact">Contact</a>
+                <a href="./contact">Contacto</a>
 
-                <a href="./history">History</a>
+                <a href="./history">Historial</a>
 
             </p>
 
