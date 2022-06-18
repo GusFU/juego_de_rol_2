@@ -38,7 +38,7 @@
     </header>
 
     <main>
-        <form action="/login" method="POST">
+        <form action="/registro" method="POST">
             <div class="formulario">
 
                 <legend>REGISTRO</legend>
@@ -48,13 +48,14 @@
 
                     <div class="campo">
                         <label>Nombre</label>
-                        <input id="nombreRegistroS" type="text"
+                        <input id="nombreRegistroS" type="text" name="name1"
                             placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde">
                     </div>
 
                     <div class="campo">
                         <label>DNI</label>
-                        <input id="DNIRegistroS" type="text" placeholder="Introduce tu DNI ej. 12345678A">
+                        <input id="DNIRegistroS" type="text" name="dni1"
+                        placeholder="Introduce tu DNI ej. 12345678A">
                     </div>
 
 
@@ -63,28 +64,35 @@
 
                     <div class="campo">
                         <label>Teléfono</label>
-                        <input id="telefoRegistroS" type="tel" placeholder="Introduce tu Número ej. 681081123">
+                        <input id="telefoRegistroS" type="tel" name="telefono1"
+                        placeholder="Introduce tu Número ej. 681081123">
                     </div>
 
 
                     <div class="campo">
                         <label>Email</label>
-                        <input id="emailRegistroS" type="email" placeholder="Introduce tu email">
+                        <input id="emailRegistroS" type="email"  name="email1" 
+                        placeholder="Introduce tu email">
                     </div>
 
                     <div class="campo">
                         <label>Dirección 1</label>
-                        <input id="direccion1" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion1" type="text" name="direccion1" placeholder="Introduce tu dirección">
                     </div>
 
                     <div class="campo">
                         <label>Dirección 2</label>
-                        <input id="direccion2" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion2" type="text"  name="direccion2" placeholder="Introduce tu dirección">
                     </div>
 
                     <div class="campo">
                         <label>Dirección 3</label>
-                        <input id="direccion3" type="text" placeholder="Introduce tu dirección">
+                        <input id="direccion3" type="text" name="direccion3"placeholder="Introduce tu dirección">
+                    </div>
+
+                    <div class="campo">
+                        <label>Contraseña</label>
+                        <input id="contrasena" type="text" name="contrasena1"placeholder="Introduce tu contraseña">
                     </div>
 
                     <div class="enviar" id="mensajeErrorS">
