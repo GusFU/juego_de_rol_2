@@ -43,9 +43,6 @@
                 <div class="place_order">
                     <a href="./place_order"><b>Haz un pedido</b></a>
                 </div>
-                <div class="pago">
-                    <a href="./pago"><b>Pago</b></a>
-                </div>
                 <div class="tracking">
                     <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
@@ -54,7 +51,7 @@
                 </div>
             
                 <div class="welcome">
-                    <a href="./welcome" id="nameD"><b>Bienvenido</b></a>
+                    <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
                     <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
                 </div>
             </nav>
@@ -100,60 +97,11 @@
 		<div id="map"></div>
 
 	</section>
+   
     <footer class="footer-distributed">
-
-        <div class="footer-left">
-
-            <p class="footer-links">
-                <a href="./landingPage">Home</a>
-
-                <a href="./login">Inicio de sesión</a>
-
-                <a href="./registro">Registro</a>
-
-                <a href="./place_order">Haz un pedido</a>
-
-                <a href="./pago">Pago</a>
-
-                <a href="./tracking">Seguimiento</a>
-
-                <a href="./contact">Contacto</a>
-
-                <a href="./history">Historial</a>
-
-            </p>
-
-            <p class="footer-company-name">Planet Express © 2022</p>
-        </div>
-
-        <div class="footer-center">
-
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p>Calle Copos nº4<br>
-                    Galapagar, Madrid</p>
-            </div>
-
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+34 681090036</p>
-            </div>
-
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:support@company.com">02sergioconde@gmail.com</a></p>
-            </div>
-
-        </div>
-
-        <div class="footer-right">
-
-            <p class="footer-company-about">
-                <span>About the company :</span>
-                Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
-            </p>
-        </div>
-    </footer>
+  
+        <%- include('../partials/footer'); %>
+      </footer>
     <script src="mapa.js"></script>
 </body>
 

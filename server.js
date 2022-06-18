@@ -41,53 +41,56 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //ENRUTAMIENTOS MEDIANTE METODO GET
 
-// app.get('/', (req, res) => {//este es con PUG
-//     res.render('history'); // Se muestra la plantilla view.pug
-//     });
+app.get('/', function (req, res) {
+    res.render('./pages/landingPage.ejs');
+});
 
-
-
- app.get('/', function (req, res) {
-     res.render('landingPage.ejs');
- });
-
- app.get('/landingPage', urlencodedParser, (req, res) => {
-     res.render('landingPage.ejs');
- });
+app.get('/landingPage', urlencodedParser, (req, res) => {
+    res.render('./pages/landingPage.ejs');
+});
 
 
 app.get('/login', urlencodedParser, (req, res) => {
-    res.render('login.ejs');
+    res.render('./pages/login.ejs');
 });
 
 app.get('/registro', urlencodedParser, (req, res) => {
-    res.render('registro.ejs');
+    res.render('./pages/registro.ejs');
+
+
+    
 });
 
 app.get('/place_order', urlencodedParser, (req, res) => {
-    res.render('place_order.ejs');
+    res.render('./pages/place_order.ejs');
+});
+
+
+app.get('/tracking', urlencodedParser, (req, res) => {
+    res.render('./pages/tracking.ejs');
+});
+
+app.get('/contact', urlencodedParser, (req, res) => {
+    res.render('./pages/contact.ejs');
 });
 
 app.get('/profile', (req, res) => {//este es con PUG
-    res.render('profile.pug'); // Se muestra la plantilla view.pug
+    res.render('./pages/profile.pug'); // Se muestra la plantilla view.pug
 });
 
 app.get('/history', (req, res) => {//este es con PUG
-    res.render('history.pug'); // Se muestra la plantilla view.pug
+    res.render('./pages/history.pug'); // Se muestra la plantilla view.pug
 });
 
 
 app.get('/pago', urlencodedParser, (req, res) => {
-    res.render('pago.ejs');
+    res.render('./pages/pago.ejs');
 });
 
-app.get('/tracking', urlencodedParser, (req, res) => {
-    res.render('tracking.ejs');
-});
 
-app.get('/contact', urlencodedParser, (req, res) => {
-    res.render('contact.ejs');
-});
+
+
+
 
 //ENRUTAMIENTOS MEDIANTE METODO POST
 
@@ -103,12 +106,12 @@ app.post('/login', urlencodedParser, (req, res) => {
 
         if (comprobacion) {
             connection.end();
-            res.render('profile.ejs');
+            res.render('/pages/profile.ejs');
 
         } else {
             // showPrompt("Escribe algo<br>...inteligente :)")
            // var alerta="Esta mal el log"
-            res.render('login.ejs')
+            res.render('/pages/login.ejs')
         }
 
 
@@ -144,12 +147,12 @@ app.post('/registro', urlencodedParser, (req, res) => {
 
 
             connection.end();
-            res.render('profile');
+            res.render('./views/pages/profile.pug');
 
         } else {
 
 
-            res.render('registro')
+            res.render('./views/pages/registro.ejs')
         }
 
 
