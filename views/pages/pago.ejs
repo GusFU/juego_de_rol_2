@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+</head>
+
+<body>
+    <header>
+        <div class="Developer">
+            <nav class="nav">
+                <div class="planetExpress">
+                    <img class="imgPlanet" src="logo.png" />
+                </div>
+
+                <div class="Nombrelogo">
+                    <p class="logo">
+                        <span><strong>Planet Express</strong></span>
+                    </p>
+                </div>
+
+                <div class="register">
+                    <a href="./registro"><b>Registro</b></a>
+                </div>
+                <div class="place_order">
+                    <a href="./place_order"><b>Haz un pedido</b></a>
+                </div>
+
+                <div class="tracking">
+                    <a href="./tracking"><b>Seguimiento</b></a>
+                </div>
+                <div class="contact">
+                    <a href="./contact"><b>Contacto</b></a>
+                </div>
+                <div class="welcome">
+                    <a href="./landingPage.ejs" id="nameD"><b>Bienvenido</b></a>
+                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
+                </div>
+            </nav>
+    </header>
+
+
+    <main>
+        <form action="/profile" method="POST">
+            <div class="contenedor-tarjeta">
+                <div class="datosTarjeta" id="datosCredito">
+                    <div class="titularTarjeta">
+                        <label>Titular de la tarjeta</label>
+                        <input id="titTarjeta" placeholder="Nombre y apellidos">
+    
+                    </div>
+                    <div class="numTarjeta">
+                        <label>Número de tarjeta</label>
+                        <input id="numeroTarjeta" placeholder="Debe contener 16 dígitos">
+                    </div>
+    
+                    <div class="caducidad">
+                        <label>Fecha de caducidad</label>
+                        <input id="cadTarjeta" placeholder="01-01">
+                    </div>
+    
+                    <div class="codigo">
+                        <label>CVV</label>
+                        <input id="cvv" placeholder="111">
+                    </div>
+    
+                    <div class="pagar">
+                        <button id="btn" class="boton">Proceder al pago</button>
+                    </div>
+    
+                </div>
+                <div class="avisoTimeD" id="avisoPreloader" hidden>
+                    <p>Comprobando datos de pago con su identidad bancaria</p>
+                    <br>
+                    <div class="preloader"></div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
