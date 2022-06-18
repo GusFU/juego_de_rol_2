@@ -42,46 +42,15 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //ENRUTAMIENTOS MEDIANTE METODO GET
 
 app.get('/', function (req, res) {
-<<<<<<< HEAD
-    res.render('./pages/landingPage');
-});
-
-app.get('/landingPage', urlencodedParser, (req, res) => {
-    res.render('./pages/landingPage');
-=======
     res.render('./pages/landingPage.ejs');
 });
 
 app.get('/landingPage', urlencodedParser, (req, res) => {
     res.render('./pages/landingPage.ejs');
->>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
 });
 
 
 app.get('/login', urlencodedParser, (req, res) => {
-<<<<<<< HEAD
-    res.render('./pages/login');
-});
-
-app.get('/registro', urlencodedParser, (req, res) => {
-    res.render('./pages/registro');
-});
-
-app.get('/place_order', urlencodedParser, (req, res) => {
-    res.render('./pages/place_order');
-});
-
-app.get('/pago', urlencodedParser, (req, res) => {
-    res.render('./pages/pago');
-});
-
-app.get('/tracking', urlencodedParser, (req, res) => {
-    res.render('./pages/tracking');
-});
-
-app.get('/contact', urlencodedParser, (req, res) => {
-    res.render('./pages/contact');
-=======
     res.render('./pages/login.ejs');
 });
 
@@ -103,7 +72,6 @@ app.get('/tracking', urlencodedParser, (req, res) => {
 
 app.get('/contact', urlencodedParser, (req, res) => {
     res.render('./pages/contact.ejs');
->>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
 });
 
 app.get('/profile', (req, res) => {//este es con PUG
@@ -138,21 +106,12 @@ app.post('/login', urlencodedParser, (req, res) => {
 
         if (comprobacion) {
             connection.end();
-<<<<<<< HEAD
-            res.render('./pages/profile');
-
-        } else {
-
-
-            res.render('./pages/login')
-=======
-            res.render('/pages/profile.ejs');
+            res.render('./pages/profile.ejs');
 
         } else {
             // showPrompt("Escribe algo<br>...inteligente :)")
            // var alerta="Esta mal el log"
-            res.render('/pages/login.ejs')
->>>>>>> 16ecbe53dc180f52d2c69668d3121ce5cffe97a0
+            res.render('./pages/login.ejs')
         }
 
 
