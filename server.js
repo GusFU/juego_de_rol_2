@@ -97,12 +97,15 @@ app.post('/registro', urlencodedParser, (req, res) => {
         if (err) throw err;
         let comprobacionreg = await funciones.registrar(req.body.dni1, req.body.email1, rows);
         if (!comprobacionreg) {
+
             const sql = await `INSERT INTO Usuarios ( nombre, dni, telefono, email, direccion1,  contrasena) VALUES ('${nombre}', '${dni}','${telefono}','${email}','${direccion1}','${contrasena}')`;
             await connection.query(sql, (err, response, fields) => {
                 if (err) throw err;
                 connection.end();
                 res.render('./pages/login.ejs');
             });
+
+
         } else {
             res.render('./pages/registro.ejs')
         }
