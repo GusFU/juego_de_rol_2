@@ -6,11 +6,13 @@
   */
 
 //En este archivo js  van a estar las funciones que usaremos en el resto de la aplicacion exportandolas con module.exports = funciones1;
+
 const funciones1 = {
     registrar: registrar, //separarlos por comas
     confirmarLogin: confirmarLogin,
     todoUsuario: todoUsuario,
-    precio: precio
+    precio: precio,
+    generarPdf: generarPdf
 }
 
 function registrar(dni, email, emails) {
@@ -90,7 +92,12 @@ function precio(peso, alto, largo, ancho) {
     return precioTotal
 }
 
-
+function generarPdf(){
+    var doc = new jsPDF()
+    
+    doc.text('Hello world!', 10, 10)
+    doc.save('a4.pdf')
+    }
 
 
 

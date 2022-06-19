@@ -26,6 +26,7 @@ const app = express();
 //instalacion de express, body parser y mongo
 const mongo = require('mongodb');
 const funciones1 = require("./funciones/funciones.js");
+const { generarPdf } = require("./funciones/funciones.js");
 const MongoClient = mongo.MongoClient;
 const mydb = "planetExpressMongo";
 
@@ -153,83 +154,15 @@ app.post('/registro', urlencodedParser, (req, res) => {
 
         if (!comprobacionreg) {
 
-
-
-
-
-            // [Object: null prototype] {
-            //     name1: 'yann poirot',
-            //     dni1: '11856599F',
-            //     telefono1: '666555888',
-            //     email1: 'masugerencias@gmail.com',      
-            //     direccion1: 'calle fray ceferino marir',
-            //     direccion2: '',
-            //     direccion3: '',
-            //     contrasena1: 'yannpoirot'
-            // //   }
-            //             const {name1,dni1,telefono1,email1,direccion1,direccion2,direccion3,contrasena1 } = req.body
-            //             const newUser= {
-            //                 nombre,
-            //                 dni,
-            //                 telefono,
-            //                 email1,
-            //                 direccion1,
-            //                 direccion2,
-            //                 direccion3,
-            //                 contrasena1
-            //             };
-
-
-            // console.log(newUser)
-            //             console.log("aqui");
-
-
-
-            // let insertQuery = 'INSERT INTO ?? (??,??,??,??,??,??,??,??,??,??) VALUES (?)';
-            // let query2 = mysql.format(insertQuery,["Usuarios",("id","nombre","dni","administrador","telefono","email","direccion1","direccion2","direccion3","contrasena"),(NULL,`${req.body.name1}`,`${req.body.dni1}`,`${req.body.telefono1}`,`${req.body.email1}`,`${req.body.direccion1}`,`${req.body.direccion2}`,`${req.body.direccion2}`,`${req.body.direccion3}`,`${req.body.contrasena1}`)]);
-
-
-            let insertQuery = `INSERT INTO Usuarios (id,nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena) VALUES ? (NULL,${req.body.name1},${req.body.dni1},false,${req.body.telefono1},${req.body.email1},${req.body.direccion1},${req.body.direccion2},${req.body.direccion3},${req.body.contrasena1})`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*  bbdd sql Usuarios
-            id INT AUTO_INCREMENT,
-             nombre VARCHAR(100) NOT NULL,
-             dni CHAR(9) UNIQUE NOT NULL,
-             administrador BOOLEAN NOT NULL,
-             telefono VARCHAR(15) NOT NULL,
-             email VARCHAR(100) NOT NULL,
-             direccion1 VARCHAR(500) NOT NULL,
-             direccion2 VARCHAR(500),
-             direccion3 VARCHAR(500),
-             contrasena VARCHAR(100) NOT NULL,
-             PRIMARY KEY(id) */
-
-            await connection.query(insertQuery, (err, response) => {
-                if (err) throw err;
-
-
+            connection.query ('INSERT INTO Usuarios (nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena) VALUES  ("req.body.name1"+"req.body.dni1"+"false+req.body.telefono1"+"req.body.email1"+"req.body.direccion1"+"req.body.direccion2"+"req.body.direccion3"+"req.body.contrasena1")'
+            , function (error, results){
+                if(error)  throw error;
+                console.log('Agregado todo OK', results);
                 connection.end();
                 res.render('./pages/contact.ejs');
 
 
-            });
-            // await connection.query('INSERT INTO Usuarios set ?', [newUser] )
-
-
+           });
 
         } else {
 
@@ -310,6 +243,20 @@ app.post('/pago', urlencodedParser, (req, res) => {
     res.render('./pages/profile.pug')
 
 });
+
+
+
+
+//GEENERACION DE FACTURA PDF
+
+
+
+
+ 
+
+
+
+
 
 
 
