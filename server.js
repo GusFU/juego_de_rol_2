@@ -233,15 +233,14 @@ app.post('/pago', urlencodedParser, (req, res) => {
 
     }
 
-    let insertQuery = 'INSERT INTO ?? (??) VALUES (?)';
-    let query2 = mysql.format(insertQuery, ["tarjetas", "campoTexto", "Añadido desde Node"]);
-    //  var query2 = "INSERT INTO customers (tarjetas, address) VALUES ('Company Inc', 'copos 37')";
+    let query2 =`INSERT INTO Usuarios (id,nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena)VALUES (null,'${req.body.name1}','${req.body.dni1}',false,'${req.body.telefono1}','${req.body.email1}','${req.body.direccion1}','${req.body.direccion2}','${req.body.direccion3}','${req.body.contrasena1}')`;
     connection.query(query2, (err, response) => {
-        if (err) throw err;
+        if(err) throw err;
         console.log(response.insertId);
-        //connection.end();
-    });
 
+});
+
+        connection.end();
 
 
 

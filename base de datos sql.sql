@@ -35,7 +35,7 @@ insert into Login values(null,"kkkkkk@kkkk.com","1234",1);
 insert into Login values(null,"gggggggg@kkkk.com","1234",2);
 select * from Login;
 #DROP TABLE Tarjetas
-CREATE TABLE Tarjetas (
+CREATE TABLE Facturas (
     id INT AUTO_INCREMENT,
     nombre_tarjeta VARCHAR(300) NOT NULL,
     fecha_caducidad DATE NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE Tarjetas (
     PRIMARY KEY(id)
 );
 
-#DROP TABLE tarjetas_usuarios;
+#DROP TABLE Facturas_usuarios;
 CREATE TABLE tarjetas_usuarios(
     id INT AUTO_INCREMENT,
     fk_id_tarjeta INT,
