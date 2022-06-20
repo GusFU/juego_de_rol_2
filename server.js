@@ -153,16 +153,22 @@ app.post('/registro', urlencodedParser, (req, res) => {
         let comprobacionreg = await funciones.registrar(req.body.dni1, req.body.email1, rows);
 
         if (!comprobacionreg) {
+            //'[",("nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena")
+            let query2 =`INSERT INTO Usuarios (id,nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena)VALUES (null,'${req.body.name1}','${req.body.dni1}',false,'${req.body.telefono1}','${req.body.email1}','${req.body.direccion1}','${req.body.direccion2}','${req.body.direccion3}','${req.body.contrasena1}')`;
+            connection.query(query2, (err, response) => {
+                if(err) throw err;
+                console.log(response.insertId);
 
-            connection.query ('INSERT INTO Usuarios (nombre,dni,administrador,telefono,email,direccion1,direccion2,direccion3,contrasena) VALUES  ("req.body.name1"+"req.body.dni1"+"false+req.body.telefono1"+"req.body.email1"+"req.body.direccion1"+"req.body.direccion2"+"req.body.direccion3"+"req.body.contrasena1")'
-            , function (error, results){
-                if(error)  throw error;
-                console.log('Agregado todo OK', results);
+
+
                 connection.end();
-                res.render('./pages/contact.ejs');
+                res.render('./pages/profile.pug');
 
 
-           });
+            });
+            
+
+
 
         } else {
 
