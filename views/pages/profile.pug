@@ -1,4 +1,5 @@
-.ejsdoctype html
+
+doctype html
 html(lang="en")
 head
     meta(charset="UTF-8")
@@ -37,7 +38,29 @@ body
                     a#diconnectD(href="")
                         b Desconectar
     main 
-    footer.Footer-distributed 
+        h1 bienvenido #{nombre}
+        div.datosPerso
+            p #{nombre}
+            p #{email}
+            p #{dni}
+            p #{telefono}
+            p #{direccion1}
+            p #{direccion2}
+            p #{direccion3}
+            
+        div.envioPaq
+            a(href='./place_order')
+                b Hacer un nuevo envío
+
+
+
+        .enviados
+            p aqui los paquetes enviados
+        .recividos
+            p aqui los paquetes recibidos
+
+    footer.footer-distributed
+
         div.footer-left
             p.footer-links 
                 a.link-1(href="./pages/landingPage.ejs") Home 
@@ -57,7 +80,38 @@ body
                     a(href="mailto:support@company.com") 02sergioconde@gmail.com
         div.footer-right
             p.footer-company-about #[span About the company: ] Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
-                
+    footer.footer-distributed  
+    div.footer-left
+        p.footer-links 
+            a.link-1(href="./pages/landingPage.ejs") Home
+            
+            a(href="./pages/login.ejs") Iniciar sesión
+            a(href="./pages/registro.ejs") Registro 
+            
+            a(href="./pages/pago.ejs") Pago
+            a(href="./page/tracking.ejs") Seguimiento
+            a(href="./pages/contact.ejs") Contacto
+        p.footer-company-name Planet Express © 2022
+
+    div.footer-center
+        div
+            i(class="fa fa-map-marker")  
+            p Calle Copos nº4 #[br] Galapagar, Madrid
+              
+        div
+            i(class="fa fa-phone")
+            p +34 681090036
+        div 
+            i(class="fa fa-envelope")
+                p
+                    a(href="mailto:support@company.com") 02sergioconde@gmail.com
+    div.footer-right
+        p.footer-company-about #[span About the company :] Planet express, nació; como una alternativa de mensajería urgente que prestaba servicios en Madrid.    
+        
+
+
+
+             
                 
                 
 
