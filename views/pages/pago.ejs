@@ -41,7 +41,7 @@
 
 
     <main>
-        <form action="/profile" method="POST">
+        <form action="/pago" method="POST">
 
             <div class="contenedor-tarjeta">
                 <div class="datosTarjeta" id="datosCredito">
@@ -60,16 +60,18 @@
                     <div class="numTarjeta">
                         <label>Número de tarjeta</label>
                         <input id="numeroTarjeta" name="numTarjeta" placeholder="Debe contener 16 dígitos">
+                        <!-- pattern="/(\d{4})(?=\d)/gm" -->
                     </div>
 
                     <div class="caducidad">
                         <label>Fecha de caducidad</label>
                         <input id="cadTarjeta" name="cadTarjeta" placeholder="01-01">
+                        <!-- /^(0[1-9]|1[0-2])(\/|-)([0-9]{4})$/gm -->
                     </div>
 
                     <div class="codigo">
                         <label>CVV</label>
-                        <input id="cod" name="cvv" placeholder="111">
+                        <input id="cod" type="password" name="cvv" placeholder="111">
                     </div>
 
                     <div class="pagar">

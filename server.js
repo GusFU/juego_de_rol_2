@@ -17,18 +17,26 @@ var datosEnvioDestino;
 var datosPaquete;
 var datosPago;
 var importe = 0;
+var hoy;
+var idPaquete;
+var myobj;
+
 //express, pug, body parser
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 //instalacion de express, body parser y mongo
+//BBDD de mongo, se declaran las variables para insertar en la coleccion envios.
 const mongo = require('mongodb');
 const funciones1 = require("./funciones/funciones.js");
 const MongoClient = mongo.MongoClient;
 const mydb = "planetExpressMongo";
 const pug = require('pug');
-const templateCompiler = pug.compileFile('./views/login.pug');
+//const templateCompiler = pug.compileFile('./views/login.pug');
 const url = "mongodb://localhost:27017/";
+const coleccion = "Envios";
+
+
 // dónde cargar los archivos estáticos PARA HACER css, mapa...
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -74,6 +82,7 @@ app.post('/login', urlencodedParser, (req, res) => {
     connection.query(query, async (err, rows) => {
         if (err) throw err;
         let comprobacion = await funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, rows);
+
         if (comprobacion) {
             let query = "SELECT * from Usuarios";
             connection.query(query, async (err, rows) => {
@@ -81,10 +90,15 @@ app.post('/login', urlencodedParser, (req, res) => {
                 await funciones.todoUsuario(req.body.emailus, rows)
                 let cont = funciones.todoUsuario(req.body.emailus, rows)
                 login3 = await rows[cont]
+                console.log(login3)
+
+                res.render('./pages/profile.pug', login3);
             });
-            connection.end();
-            res.render('./pages/profile.pug');
+            // const templateCompiler = pug.compileFile('./views/pages/profile.pug');
+
+
         } else {
+            console.log("aqui        " + login3)
             // showPrompt("Escribe algo<br>...inteligente :)")
             // var alerta="Esta mal el log"
             res.render('./pages/login.ejs')
@@ -98,7 +112,8 @@ app.post('/registro', urlencodedParser, (req, res) => {
         let comprobacionreg = await funciones.registrar(req.body.dni1, req.body.email1, rows);
         if (!comprobacionreg) {
 
-            const sql = await `INSERT INTO Usuarios ( nombre, dni, telefono, email, direccion1,  contrasena) VALUES ('${nombre}', '${dni}','${telefono}','${email}','${direccion1}','${contrasena}')`;
+            // ( id, nombre, dni, administrador, telefono, email, direccion1, direccion2, direccion3, contrasena)
+            const sql = await `INSERT INTO Usuarios  VALUES (null,"${req.body.name1}","${req.body.dni1}",false,"${req.body.telefono1}","${req.body.email1}","${req.body.direccion1}","${req.body.direccion2}","${req.body.direccion3}",SHA("${req.body.contrasena1}"))`;
             await connection.query(sql, (err, response, fields) => {
                 if (err) throw err;
                 connection.end();
@@ -145,11 +160,70 @@ app.post('/place_order', urlencodedParser, (req, res) => {
 app.post('/pago', urlencodedParser, (req, res) => {
 
     datosPago = {
-        "tituTarjeta": `${req.body.ntituTarjeta}`,
+        "tituTarjeta": `${req.body.tituTarjeta}`,
         "numTarjeta": `${req.body.numTarjeta}`,
         "cadTarjeta": `${req.body.cadTarjeta}`,
         "cvv": `${req.body.cvv}`
     }
+    //declarado arriba para que al meterse en la BBDD se ponga la fecha de ahora.
+
+
+    //iNSERCION EN MONGO
+
+
+
+
+
+
+
+
+
+
+    //Insertar dentro de una coleccion de una BD
+    MongoClient.connect(url, async function (err, db) {
+        if (err) throw err;
+        var dbo = db.db(mydb);
+        myobj = {
+            "idUsuario": `${login3.id}`,
+            "destinatario": `${datosEnvioDestino.nombre}`,
+            "telefono_destinatario": `${datosEnvioDestino.telefono}`,
+            "direccion_destino": `${datosEnvioDestino.direccion}`,
+            "dni_destinatario": `${datosEnvioDestino.dni}`,
+            "datos_paquete": `${datosPaquete}`
+        };
+        dbo.collection(coleccion).insertOne(myobj, async function (err, res) {
+            if (err) throw err;
+
+
+
+
+        });
+        dbo.collection(coleccion).findOne(myobj, await async function (err, result) {
+            if (err) throw err;
+            idPaquete = await result._id
+            db.close();
+
+            console.log(idPaquete)
+        });
+    });
+    
+
+
+
+
+
+
+    //     hoy = new Date();
+    // console.log(hoy)
+    //     let query2 = `INSERT INTO Facturas (id,num_tarjeta,importe,fecha,id_paquete,fk_id_usuario)VALUES (null,'${req.body.numTarjeta}','${importe}','${ hoy.getFullYear()+ '-'+  (hoy.getMonth() + 1) + '-' + hoy.getDate()}','${idPaquete}',null)`;
+    //     connection.query(query2, (err, response) => {
+    //         if (err) throw err;
+    //         console.log(response.insertId);
+
+    //     });
+
+    connection.end();
+
 
 
     res.render('./pages/profile.pug')
@@ -158,90 +232,90 @@ app.post('/pago', urlencodedParser, (req, res) => {
 //instalar esto: npm install -g html-pdf (de manera global)
 //npm install html-pdf
 
- const pdf = require("html-pdf");
- const fs = require("fs");
+const pdf = require("html-pdf");
+const fs = require("fs");
 //   const ejsToPdf= {String} ('./views/pages/factura.ejs')
 // //   @param {Object} data Data to be passed
 // //   @private
 const ubicacionPlantilla = require.resolve("./factura.html")
- let contenidoHtml = fs.readFileSync(ubicacionPlantilla, 'utf8')
- // Estos productos podrían venir de cualquier lugar
- const productos = [
-     {
-         descripcion: "Nintendo Switch",
-         cantidad: 2,
-         precio: 300,
-     },
-     {
-         descripcion: "Videojuego: Hollow Knight",
-         cantidad: 1,
-         precio: 15,
-     },
-     {
-         descripcion: "Audífonos HyperX",
-         cantidad: 5,
-         precio: 15,
-     },
- ];
- 
- // Nota: el formateador solo es para, valga la redundancia, formatear el dinero. No es requerido, solo que quiero que se vea bonito
- // https://parzibyte.me/blog/2021/05/03/formatear-dinero-javascript/
- const formateador = new Intl.NumberFormat("en", { style: "currency", "currency": "EUR" });
- // Generar el HTML de la tabla
- app.get('/factura', (req,res) => {
- let tabla = "";
- let subtotal = 0;
- for (let producto of productos) {
-     // Aumentar el total
-     const totalProducto = producto.cantidad * producto.precio;
-     subtotal += totalProducto;
-     // Y concatenar los productos
-     tabla += `<tr>
+let contenidoHtml = fs.readFileSync(ubicacionPlantilla, 'utf8')
+// Estos productos podrían venir de cualquier lugar
+const productos = [
+    {
+        descripcion: "Nintendo Switch",
+        cantidad: 2,
+        precio: 300,
+    },
+    {
+        descripcion: "Videojuego: Hollow Knight",
+        cantidad: 1,
+        precio: 15,
+    },
+    {
+        descripcion: "Audífonos HyperX",
+        cantidad: 5,
+        precio: 15,
+    },
+];
+
+// Nota: el formateador solo es para, valga la redundancia, formatear el dinero. No es requerido, solo que quiero que se vea bonito
+// https://parzibyte.me/blog/2021/05/03/formatear-dinero-javascript/
+const formateador = new Intl.NumberFormat("en", { style: "currency", "currency": "EUR" });
+// Generar el HTML de la tabla
+app.get('/factura', (req, res) => {
+    let tabla = "";
+    let subtotal = 0;
+    for (let producto of productos) {
+        // Aumentar el total
+        const totalProducto = producto.cantidad * producto.precio;
+        subtotal += totalProducto;
+        // Y concatenar los productos
+        tabla += `<tr>
      <td>${producto.descripcion}</td>
      <td>${producto.cantidad}</td>
      <td>${formateador.format(producto.precio)}</td>
      <td>${formateador.format(totalProducto)}</td>
      </tr>`;
- }
- const impuestos = subtotal * 0.16
- const total = subtotal + impuestos;
-
- var hoy = new Date();
-
-var fecha = hoy.getDate() + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getFullYear();
-
-	
-var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
-
-var fechaYHora = fecha + ' ' + hora;
-
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$ºª%&/()*Ç=?[]{}+-_^<>ç';
-let result = '';
-const charactersLength = characters.length;
-for (let i = 0; i < 9; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-}
- // Remplazar el valor {{tablaProductos}} por el verdadero valor
- contenidoHtml = contenidoHtml.replace("{{tablaProductos}}", tabla);
- 
- // Y también los otros valores
- 
- contenidoHtml = contenidoHtml.replace("{{subtotal}}", formateador.format(subtotal));
-
- contenidoHtml = contenidoHtml.replace("{{impuestos}}", formateador.format(impuestos));
- contenidoHtml = contenidoHtml.replace("{{total}}", formateador.format(total));
- contenidoHtml = contenidoHtml.replace("{{fecha}}", fechaYHora);
- contenidoHtml = contenidoHtml.replace("{{identificador}}", result);
- pdf.create(contenidoHtml).toStream((error, stream) => {
-    if (error) {
-        res.end("Error creando PDF: " + error)
-    } else {
-        res.setHeader("Content-Type", "application/pdf");
-        stream.pipe(res);
     }
-});
+    const impuestos = subtotal * 0.16
+    const total = subtotal + impuestos;
 
-// res.render("./pages/factura.ejs")
+
+
+    var fecha = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+
+
+    var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+
+    var fechaYHora = fecha + ' ' + hora;
+
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$ºª%&/()*Ç=?[]{}+-_^<>ç';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < 9; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    // Remplazar el valor {{tablaProductos}} por el verdadero valor
+    contenidoHtml = contenidoHtml.replace("{{tablaProductos}}", tabla);
+
+    // Y también los otros valores
+
+    contenidoHtml = contenidoHtml.replace("{{subtotal}}", formateador.format(subtotal));
+
+    contenidoHtml = contenidoHtml.replace("{{impuestos}}", formateador.format(impuestos));
+    contenidoHtml = contenidoHtml.replace("{{total}}", formateador.format(total));
+    contenidoHtml = contenidoHtml.replace("{{fecha}}", fechaYHora);
+    contenidoHtml = contenidoHtml.replace("{{identificador}}", result);
+    pdf.create(contenidoHtml).toStream((error, stream) => {
+        if (error) {
+            res.end("Error creando PDF: " + error)
+        } else {
+            res.setHeader("Content-Type", "application/pdf");
+            stream.pipe(res);
+        }
+    });
+
+    // res.render("./pages/factura.ejs")
 })
 
 //  pdf.create(contenidoHtml).toFile("salida.pdf", (error) => {
