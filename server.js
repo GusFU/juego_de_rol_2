@@ -268,13 +268,15 @@ app.post('/pago', urlencodedParser, (req, res) => {
     });
     res.render('./pages/profile.pug', { "login3": login3, "enviados": pedidos });
 })
+
+//FACTURA FACTURA  FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA FACTURA 
 app.get('/factura', urlencodedParser, (req, res) => {
 
     var result1;
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db(mydb);
-        dbo.collection(coleccion).findOne({ _id: mongo.ObjectId("62b1f25a3b12d41684770aad") }, async function (err, result32) {
+        dbo.collection(coleccion).findOne({ _id: mongo.ObjectId("62b2112ea41710b3ed64c14d") }, async function (err, result32) {
             if (err) throw err;
             result1 = await result32
 
@@ -302,7 +304,7 @@ app.get('/factura', urlencodedParser, (req, res) => {
                 ;
             const formateador = new Intl.NumberFormat("en", { style: "currency", "currency": "EUR" });
             let tabla = "";
-            let subtotal = producto.precio;
+            let subtotal = parseInt(producto.precio);
 
 
             tabla += `<tr>

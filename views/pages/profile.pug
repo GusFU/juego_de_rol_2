@@ -64,7 +64,8 @@ body
                     p #{enviados[i].nombre_remitente}
                     p #{enviados[i].datos_paquete.peso}
                     p #{enviados[i].direccion_destino}
-
+                    a(href="./factura") 
+                        b Generar factura
    
 
             
@@ -72,8 +73,7 @@ body
                
 
             
-            a(href="./factura") 
-                b Generar factura
+            
             div.envioPaq
                 a(href='./place_order')
                     b Hacer un nuevo envío
