@@ -1,0 +1,110 @@
+
+doctype html
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="style.css")
+    title PERFIL
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap", rel="stylesheet")
+body 
+    header
+        div.Developer
+            nav.nav
+                div.planetExpress
+                    img.imgPlanet(src="logo.png")
+                div.Nombrelogo
+                    p.logo
+                        span
+                            strong Planet Express 
+                
+                div.tracking
+                    a(href="./tracking")
+                        b Seguimiento
+                 
+                div.welcome
+                     
+                    a#diconnectD(href="./disconect")
+                        b Desconectar
+    main 
+        div.datosEnvio
+                div.datosProfile 
+                
+                        h1 Bienvenido #{login3.nombre}
+                        p Email: #{login3.email}
+                        p DNI: #{login3.dni}
+                        p Telefono: #{login3.telefono}
+                        p Dirección 1: #{login3.direccion1}
+                        p Dirección 2: #{login3.direccion2}
+                        p Dirección 3: #{login3.direccion3}
+                                            
+        div.datosEnvio       
+            div.datosProfile
+                a(href='./place_order')
+                    b Hacer un nuevo envío
+
+
+              
+                    div.enviados
+                    p Paquetes enviados:
+                    
+                        - for(let i = 0; i <enviados.length; i++)
+                            p Id: #{enviados[i]._id}
+                            p Remitente: #{enviados[i].nombre_remitente}
+                            p Peso Paquete: #{enviados[i].datos_paquete.peso}
+                            p Dirección de Destino: #{enviados[i].direccion_destino}
+                            a(href=`./factura/${enviados[i]._id}`) 
+                                b Generar factura
+   
+
+            
+                 
+               
+
+            
+            
+           
+
+
+    footer.footer-distributed
+
+        div.footer-left
+            p.footer-links 
+                 
+                a(href="./contact") Contacto 
+            p.footer-company-name Planet Express © 2022
+        div.footer-center
+            div
+                i(class="fa fa-map-marker")
+                p Calle Copos nº4 #[br] Galapagar, Madrid
+            div 
+                i(class="fa fa-envelope")
+                p
+                    a(href="mailto:support@company.com") 02sergioconde@gmail.com
+        div.footer-right
+            p.footer-company-about #[span About the company: ] Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
+      
+        
+
+
+
+             
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+

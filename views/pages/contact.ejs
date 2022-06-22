@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="Developer">
+            <nav class="nav">
+                <div class="planetExpress">
+                    <img class="imgPlanet" src="logo.png" />
+                </div>
+
+                <div class="Nombrelogo">
+                    <p class="logo">
+                        <span><strong>Planet Express</strong></span>
+                    </p>
+                </div>
+
+                <div class="register">
+                    <a href="./registro"><b>Registro</b></a>
+                </div>
+                <div class="place_order">
+                    <a href="./place_order"><b>Haz un pedido</b></a>
+                </div>
+                <div class="tracking">
+                    <a href="./tracking"><b>Seguimiento</b></a>
+                </div>
+                <div class="contact">
+                    <a href="./contact"><b>Contacto</b></a>
+                </div>
+                <div class="welcome">
+                    <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
+                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
+                </div>
+            </nav>
+    </header>
+
+
+    <main>
+        <form action="/gracias" method="POST">
+            <div class="formulario" id="form">
+                <legend>Contáctame que te pasa</legend>
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input id="name" placeholder="Inserte su nombre aquí" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input id="lastname" placeholder="Inserte sus apellidos aquí" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Correo</label>
+                        <input id="mail" type="mail" placeholder="Inserte su dirección de correo electrónico aquí"
+                            required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input id="tel" placeholder="Inserte su teléfono aquí" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Mensaje</label>
+                        <textarea></textarea>
+                    </div>
+
+                </div>
+
+                <div class="enviar">
+                    <input type="submit" id="enviar"  value="Enviar">
+                    </button>
+                </div>
+        </form>
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+    <footer class="footer-distributed">
+  
+        <%- include('../partials/footer'); %>
+      </footer>
+</body>
+
+</html>
+

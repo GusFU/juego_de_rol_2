@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "direccion": "Calle Finisterre", 
+        "latitud": "40.479299765969245",
+        "longitud": "-3.702774237834012"
+    },
+    {
+        "id": "2",
+        "direccion": "Metro Peñagrande",
+        "latitud": "40.47597018719403",
+        "longitud": "-3.7159648563637133"
+    },
+    {
+        "id": "3",
+        "direccion": "Metro Antonio Machado",
+        "latitud": " 40.47016676952121",
+        "longitud": "-3.718220588101072"
+    },
+    {
+        "id": "4",
+        "direccion": "IES Virgen de la Paloma",
+        "latitud": "40.45904934453395",
+        "longitud": "-3.715892430992213"
+    }
+]

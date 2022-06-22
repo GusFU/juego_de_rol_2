@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mapa.css">
+    <title>Tracking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <!-- Link Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <!-- Script Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+</head>
+
+<body>
+    <header>
+        <div class="Developer">
+            <nav class="nav">
+                <div class="planetExpress">
+                    <img class="imgPlanet" src="logo.png" />
+                </div>
+
+                <div class="Nombrelogo">
+                    <p class="logo">
+                        <span><strong>Planet Express</strong></span>
+                    </p>
+                </div>
+                <div class="login">
+                    <a href="./login"><b>Login</b></a>
+                </div>
+                <div class="register">
+                    <a href="./registro"><b>Registro</b></a>
+                </div>
+
+
+
+
+                <div class="welcome">
+                    <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
+                </div>
+            </nav>
+    </header>
+
+
+    <main>
+
+
+        <div class="formulario">
+            <fieldset id="formularioM">
+                <legend>TRACKING</legend>
+
+                <div class="contenedor-campos">
+
+
+                    <div class="campo">
+                        <label>Número de Tracking</label>
+                        <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
+                    </div>
+
+                    <style type="text/css" media="screen">
+                        #paqueteErroneo {
+                            color: red;
+                        }
+                    </style>
+                    <p id="paqueteErroneo"></p>
+                </div>
+                <div class="enviar">
+                    <button onclick="searchPackage()" class="boton">Rastrear</button>
+                    <!-- type="submit" -->
+                    <br><br>
+
+
+
+
+                </div>
+
+        </div>
+        </fieldset>
+        <!-- </form> -->
+
+
+        </fieldset>
+    </main>
+    <section>
+
+        <!-- <div class="searchMap">
+			<input type="text" id="cityName">
+			<button onclick="searchCity();">Buscar Ciudad</button>
+		</div> -->
+        <div id="map"></div>
+
+    </section>
+
+    <footer class="footer-distributed">
+
+        <%- include('../partials/footer'); %>
+    </footer>
+    <script src="mapa.js"></script>
+</body>
+
+</html>

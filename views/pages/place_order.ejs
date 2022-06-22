@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+
+</head>
+
+<body>
+    <header>
+        <div class="Developer">
+            <nav class="nav">
+                <div class="planetExpress">
+                    <img class="imgPlanet" src="logo.png" />
+                </div>
+
+                <div class="Nombrelogo">
+                    <p class="logo">
+                        <span><strong>Planet Express</strong></span>
+                    </p>
+                </div>
+
+                
+                
+                <div class="tracking">
+                    <a href="/tracking"><b>Seguimiento</b></a>
+                
+                </div>
+
+                <div class="welcome">
+                    
+                    <a id="disconnectD" href="./disconect" ><b>Desconectar</b></a>
+                </div>
+            </nav>
+    </header>
+
+
+    <main>
+        <form action="/place_order" method="POST">
+            <div class="formulario_placeOrder">
+                <div class="formulario" id="form">
+                    <fieldset id="formularioM">
+
+                        <legend>ORIGEN</legend>
+
+                        <div class="contenedor-campos">
+
+                           
+
+                            <div class="campo">
+                                <label>Direccion</label>
+                                <input id="direccion_origen" type="text" name="direccionOrigen"
+                                    placeholder="Introduce tu Dirección"
+                                    pattern="^[a-zA-Z0-9_ ]*$">
+                            </div>
+
+                            <div class="campo">
+                                <label>Código Postal</label>
+                                <input id="codigoPostal_origen" type="number" name="codigoPostal"
+                                    placeholder="Introduce tu CP">
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+
+
+                <div class="formulario" id="form">
+                    <fieldset id="formularioM">
+                        <legend>DESTINO</legend>
+
+                        <div class="contenedor-campos">
+
+                            <div class="campo">
+                                <label>Nombre</label>
+                                <input id="nombre_destino" type="text" name="nombreDestino"
+                                    placeholder="Introduce tu Nombre"
+                                    pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
+                            </div>
+                            <div class="campo">
+                                <label>Teléfono</label>
+                                <input id="telefono_destino" type="tel" name="telefonoDestino"
+                                    placeholder="Introduce el telefono del destinatario">
+                            </div>
+
+                            <div class="campo">
+                                <label>Direccion</label>
+                                <input id="direccion_destino" type="text" name="direccionDestino"
+                                    placeholder="Introduce tu Dirección"
+                                    pattern="^[a-zA-Z0-9_ ]*$">
+                            </div>
+
+                            <div class="campo">
+                                <label>Código Postal</label>
+                                <input id="codigoPostal_origen" type="number" name="codigoPostalDestino"
+                                    placeholder="Introduce tu CP">
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+
+            <div class="formulario" id="form">
+                <legend>CARACTERISTICAS DEL PAQUETE</legend>
+
+                <div class="contenedor">
+
+                    <div class="campo">
+                        <label>Peso (kg)</label>
+                        <input type="number" id="pes" name="peso" placeholder="Ej: 5" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Alto (m)</label>
+                        <input type="number" id="alt" name="alto" placeholder="Ej: 60" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Largo (m)</label>
+                        <input type="number" id="larg" name="largo" placeholder="Ej: 60" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Ancho (m)</label>
+                        <input type="number" id="anch" name="ancho" placeholder="Ej: 30" required>
+                    </div>
+
+
+
+                </div>
+
+                <div class="enviar">
+                    <button type="submit" class="boton">Pagar</button>
+                    <br><br>
+                </div>
+
+
+
+        </form>
+    </main>
+
+
+
+    <footer class="footer-distributed">
+
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+
+</html>
