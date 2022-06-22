@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: funciones/funciones.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: funciones/funciones.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**Los autores del proyecto:
+   *@author Gustavo
+   *@author Sergio
+   *@author JoseLuis
+   *@author YannPoirot 
+   *esto tiene que salor joder
+   *para JDOC hay que isntalar esto : npm i jdoc
+
+  */
+
+//En este archivo js  van a estar las funciones que usaremos en el resto de la aplicacion exportandolas con module.exports = funciones1;
+
+ /**
+  * Esta son las constantes:
+  * @const {registrar}
+  * @const {confirmarLogin}
+  * @const {todoUsuario}
+  * @const {precio}
+ */
+const funciones1 = {
+    registrar: registrar, //separarlos por comas
+    confirmarLogin: confirmarLogin,
+    todoUsuario: todoUsuario,
+    precio: precio,
+    
+}
+ /**
+  * funcion registrar
+  * 
+  * @param {string}
+  * @param {string}
+  * @param {string}
+   */
+function registrar(dni, email, emails) {
+let corresponde= false
+    let letra = dni[8].toUpperCase();
+    let serie = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    if (serie[Number(dni.substring(0, 8)) % 23] == letra) {
+        corresponde = true;
+        var cont = 0
+
+        if (corresponde) {
+
+            while (corresponde) {
+                if (email == emails[cont]) {
+
+                    return true
+                } else {
+                    cont++
+                }
+                corresponde = corresponde &amp;&amp; (email == emails[cont])
+            }
+
+        } else {
+            return false;
+        }
+    } else {
+        return false
+    }
+}
+
+
+
+
+
+//si el ususario coincide con el usuario y la contraseña con los de la BBDD, pues que entre.
+
+/**
+  * funcion confirmarLogin
+  * cofirma el login del usuario.
+  * @param {string}
+  * @param {string}
+  * @param {json}
+   */
+
+
+function confirmarLogin(emailLogin, contrasenaLogin, rows) {
+
+    // for (let i = 0; i &lt; emailssql; i++) {
+
+    let cont = 0;
+    let test = true;
+let contrasena= SHA1(contrasenaLogin)
+
+
+    while (test) {//mientras test sea verdadero se hará todo lo que hay dentro.
+console.log(cont)
+        
+            
+        
+        test = test &amp;&amp; (emailLogin == rows[cont].email &amp;&amp; contrasena == rows[cont].contrasena) &amp;&amp; cont&lt;rows.length
+         cont++
+    }
+
+
+
+}
+
+
+/**
+  * funcion todoUsuario
+  * Guarda en login 3 el usuario.
+  * @param {string}
+  * @param {json}
+   */
+function todoUsuario(email, rows) {
+    let cont = 0;
+    let test = true;
+    while (test) {
+
+        if (email == rows[cont].email) {
+
+            return cont
+        } else {
+            cont++
+        }
+        test = test &amp;&amp; (email == rows[cont].email)
+    }
+
+}
+//calculo de precio de paquete
+
+/**
+  * funcion precio
+  * calcula el precio del paquete.
+  * @param {number}
+  * @param {number}
+  * @param {number}
+   */
+
+function precio(peso, alto, largo, ancho) {
+    const precio1 = 2;
+    var volumen = alto * largo * ancho;
+    var precioTotal = precio1 * volumen * peso
+    return precioTotal
+}
+
+
+
+function SHA1(msg) {
+    function rotate_left(n,s) {
+    var t4 = ( n&lt;&lt;s ) | (n>>>(32-s));
+    return t4;
+    };
+    function lsb_hex(val) {
+    var str='';
+    var i;
+    var vh;
+    var vl;
+    for( i=0; i&lt;=6; i+=2 ) {
+    vh = (val>>>(i*4+4))&amp;0x0f;
+    vl = (val>>>(i*4))&amp;0x0f;
+    str += vh.toString(16) + vl.toString(16);
+    }
+    return str;
+    };
+    function cvt_hex(val) {
+    var str='';
+    var i;
+    var v;
+    for( i=7; i>=0; i-- ) {
+    v = (val>>>(i*4))&amp;0x0f;
+    str += v.toString(16);
+    }
+    return str;
+    };
+    function Utf8Encode(string) {
+    string = string.replace(/\r\n/g,'\n');
+    var utftext = '';
+    for (var n = 0; n &lt; string.length; n++) {
+    var c = string.charCodeAt(n);
+    if (c &lt; 128) {
+    utftext += String.fromCharCode(c);
+    }
+    else if((c > 127) &amp;&amp; (c &lt; 2048)) {
+    utftext += String.fromCharCode((c >> 6) | 192);
+    utftext += String.fromCharCode((c &amp; 63) | 128);
+    }
+    else {
+    utftext += String.fromCharCode((c >> 12) | 224);
+    utftext += String.fromCharCode(((c >> 6) &amp; 63) | 128);
+    utftext += String.fromCharCode((c &amp; 63) | 128);
+    }
+    }
+    return utftext;
+    };
+    var blockstart;
+    var i, j;
+    var W = new Array(80);
+    var H0 = 0x67452301;
+    var H1 = 0xEFCDAB89;
+    var H2 = 0x98BADCFE;
+    var H3 = 0x10325476;
+    var H4 = 0xC3D2E1F0;
+    var A, B, C, D, E;
+    var temp;
+    msg = Utf8Encode(msg);
+    var msg_len = msg.length;
+    var word_array = new Array();
+    for( i=0; i&lt;msg_len-3; i+=4 ) {
+    j = msg.charCodeAt(i)&lt;&lt;24 | msg.charCodeAt(i+1)&lt;&lt;16 |
+    msg.charCodeAt(i+2)&lt;&lt;8 | msg.charCodeAt(i+3);
+    word_array.push( j );
+    }
+    switch( msg_len % 4 ) {
+    case 0:
+    i = 0x080000000;
+    break;
+    case 1:
+    i = msg.charCodeAt(msg_len-1)&lt;&lt;24 | 0x0800000;
+    break;
+    case 2:
+    i = msg.charCodeAt(msg_len-2)&lt;&lt;24 | msg.charCodeAt(msg_len-1)&lt;&lt;16 | 0x08000;
+    break;
+    case 3:
+    i = msg.charCodeAt(msg_len-3)&lt;&lt;24 | msg.charCodeAt(msg_len-2)&lt;&lt;16 | msg.charCodeAt(msg_len-1)&lt;&lt;8 | 0x80;
+    break;
+    }
+    word_array.push( i );
+    while( (word_array.length % 16) != 14 ) word_array.push( 0 );
+    word_array.push( msg_len>>>29 );
+    word_array.push( (msg_len&lt;&lt;3)&amp;0x0ffffffff );
+    for ( blockstart=0; blockstart&lt;word_array.length; blockstart+=16 ) {
+    for( i=0; i&lt;16; i++ ) W[i] = word_array[blockstart+i];
+    for( i=16; i&lt;=79; i++ ) W[i] = rotate_left(W[i-3] ^ W[i-8] ^ W[i-14] ^ W[i-16], 1);
+    A = H0;
+    B = H1;
+    C = H2;
+    D = H3;
+    E = H4;
+    for( i= 0; i&lt;=19; i++ ) {
+    temp = (rotate_left(A,5) + ((B&amp;C) | (~B&amp;D)) + E + W[i] + 0x5A827999) &amp; 0x0ffffffff;
+    E = D;
+    D = C;
+    C = rotate_left(B,30);
+    B = A;
+    A = temp;
+    }
+    for( i=20; i&lt;=39; i++ ) {
+    temp = (rotate_left(A,5) + (B ^ C ^ D) + E + W[i] + 0x6ED9EBA1) &amp; 0x0ffffffff;
+    E = D;
+    D = C;
+    C = rotate_left(B,30);
+    B = A;
+    A = temp;
+    }
+    for( i=40; i&lt;=59; i++ ) {
+    temp = (rotate_left(A,5) + ((B&amp;C) | (B&amp;D) | (C&amp;D)) + E + W[i] + 0x8F1BBCDC) &amp; 0x0ffffffff;
+    E = D;
+    D = C;
+    C = rotate_left(B,30);
+    B = A;
+    A = temp;
+    }
+    for( i=60; i&lt;=79; i++ ) {
+    temp = (rotate_left(A,5) + (B ^ C ^ D) + E + W[i] + 0xCA62C1D6) &amp; 0x0ffffffff;
+    E = D;
+    D = C;
+    C = rotate_left(B,30);
+    B = A;
+    A = temp;
+    }
+    H0 = (H0 + A) &amp; 0x0ffffffff;
+    H1 = (H1 + B) &amp; 0x0ffffffff;
+    H2 = (H2 + C) &amp; 0x0ffffffff;
+    H3 = (H3 + D) &amp; 0x0ffffffff;
+    H4 = (H4 + E) &amp; 0x0ffffffff;
+    }
+    var temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
+   
+    return temp.toLowerCase();
+   }
+
+
+
+
+
+
+
+
+module.exports = funciones1;
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#//IMPORTAMOS">//IMPORTAMOS</a></li><li><a href="global.html#confirmarLogin">confirmarLogin</a></li><li><a href="global.html#funciones1">funciones1</a></li><li><a href="global.html#precio">precio</a></li><li><a href="global.html#registrar">registrar</a></li><li><a href="global.html#todoUsuario">todoUsuario</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 20 2022 15:52:57 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

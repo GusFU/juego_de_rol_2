@@ -59,34 +59,32 @@
 
 
     <main>
-        <form action="/orders" method="POST">
-            <div class="formulario">
-                <fieldset id="formularioM">
-                    <legend>TRACKING</legend>
+        <div class="formulario">
+            <fieldset id="formularioM">
+                <legend>TRACKING</legend>
 
-                    <div class="contenedor-campos">
-
-
-                        <div class="campo">
-                            <label>Número de Tracking</label>
-                            <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
-                        </div>
+                <div class="contenedor-campos">
 
 
-                    </div>
-                    <div class="enviar">
-                        <button type="submit" class="boton">Enviar</button>
-                        <br><br>
-
-
-
-
+                    <div class="campo">
+                        <label>Número de Tracking</label>
+                        <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
                     </div>
 
-            </div>
-            </fieldset>
-        </form>
 
+                </div>
+                <div class="enviar">
+                    <button onclick="searchPackage()" class="boton">Rastrear</button>
+                    <!-- type="submit" -->
+                    <br><br>
+
+
+
+
+                </div>
+
+        </div>
+        </fieldset>
     </main>
     <section >
 
