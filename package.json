@@ -4,8 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+
+    "test": "jest",
+    "start": "nodemon server.js",
+    "doc": "jsdoc -c jsdoc.json"
+
   },
   "keywords": [],
   "author": "",
@@ -17,6 +20,9 @@
     "fs": "^0.0.1-security",
     "html": "^1.0.0",
     "html-pdf": "^3.0.1",
+    "jdoc": "^0.2.0",
+    "jest": "^28.1.1",
+    "jsdoc": "^3.6.10",
     "mongodb": "^4.7.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.16",

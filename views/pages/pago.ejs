@@ -19,29 +19,19 @@
                     </p>
                 </div>
 
-                <div class="register">
-                    <a href="./registro"><b>Registro</b></a>
-                </div>
-                <div class="place_order">
-                    <a href="./place_order"><b>Haz un pedido</b></a>
-                </div>
-
                 <div class="tracking">
                     <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
-                <div class="contact">
-                    <a href="./contact"><b>Contacto</b></a>
-                </div>
                 <div class="welcome">
-                    <a href="./landingPage.ejs" id="nameD"><b>Bienvenido</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
+                    
+                    <a id="disconnectD" href="./disconect" ><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
 
 
     <main>
-        <form action="/profile" method="POST">
+        <form action="/pago" method="POST">
 
             <div class="contenedor-tarjeta">
                 <div class="datosTarjeta" id="datosCredito">
@@ -54,22 +44,22 @@
                     </div>
                     <div class="titularTarjeta">
                         <label>Titular de la tarjeta</label>
-                        <input id="titTarjeta" name="tituTarjeta" placeholder="Nombre y apellidos">
+                        <input id="titTarjeta" name="tituTarjeta" placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde"
+                        pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
 
                     </div>
                     <div class="numTarjeta">
                         <label>Número de tarjeta</label>
-                        <input id="numeroTarjeta" name="numTarjeta" placeholder="Debe contener 16 dígitos">
+                        <input id="numeroTarjeta" name="numTarjeta" type="number" placeholder="Debe contener 16 dígitos">
                     </div>
-
                     <div class="caducidad">
                         <label>Fecha de caducidad</label>
-                        <input id="cadTarjeta" name="cadTarjeta" placeholder="01-01">
+                        <input id="cadTarjeta" name="cadTarjeta" placeholder="01-2022">
                     </div>
 
                     <div class="codigo">
                         <label>CVV</label>
-                        <input id="cod" name="cvv" placeholder="111">
+                        <input id="cod" type="number" name="cvv" placeholder="111">
                     </div>
 
                     <div class="pagar">

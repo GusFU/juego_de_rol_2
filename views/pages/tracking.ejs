@@ -36,31 +36,26 @@
                         <span><strong>Planet Express</strong></span>
                     </p>
                 </div>
-
+                <div class="login">
+                    <a href="./login"><b>Login</b></a>
+                </div>
                 <div class="register">
                     <a href="./registro"><b>Registro</b></a>
                 </div>
-                <div class="place_order">
-                    <a href="./place_order"><b>Haz un pedido</b></a>
-                </div>
-                <div class="tracking">
-                    <a href="./tracking"><b>Seguimiento</b></a>
-                </div>
-                <div class="contact">
-                    <a href="./contact"><b>Contacto</b></a>
-                </div>
+
+
+
 
                 <div class="welcome">
                     <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
 
 
     <main>
-        <!-- action="/orders" method="POST" -->
-        <!-- <form > -->
+
+
         <div class="formulario">
             <fieldset id="formularioM">
                 <legend>TRACKING</legend>
@@ -73,7 +68,12 @@
                         <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
                     </div>
 
-
+                    <style type="text/css" media="screen">
+                        #paqueteErroneo {
+                            color: red;
+                        }
+                    </style>
+                    <p id="paqueteErroneo"></p>
                 </div>
                 <div class="enviar">
                     <button onclick="searchPackage()" class="boton">Rastrear</button>
@@ -89,6 +89,8 @@
         </fieldset>
         <!-- </form> -->
 
+
+        </fieldset>
     </main>
     <section>
 

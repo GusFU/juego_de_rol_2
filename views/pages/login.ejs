@@ -20,13 +20,18 @@
                 </div>
 
                 <div class="register">
+
                     <a href="./registro"><b>Registro</b></a>
                 </div>
                 <div class="tracking">
                     <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
-                <div class="contact">
-                    <a href="./contact"><b>Contacto</b></a>
+                
+                <div class="welcome">
+
+                    <div class="welcome">
+                        <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
+                    </div>
                 </div>
             </nav>
     </header>
@@ -36,21 +41,32 @@
         <form action="/login" method="POST">
             <div class="formulario">
                 <fieldset id="formularioM">
-                    <legend>INICIO DE SESION</legend>
+
+                    <legend>INICIO DE SESIóN</legend>
+
 
                     <div class="contenedor-campos">
 
 
                         <div class="campo">
                             <label>Email</label>
-                            <input id="emailLoginS" type="email" placeholder="Introduce tu email" name="emailus">
+                            <input id="emailLoginS" type="email" placeholder="Introduce tu email Ej:02sergioconde@gmail.com" name="emailus"
+                           >
                         </div>
 
                         <div class="campo">
                             <label>Contraseña</label>
-                            <input id="passwordLoginS" type="password" placeholder="Introduce tu contraseña"
+                            <input id="passwordLoginS" type="password" placeholder="Introduce tu contraseña Ej:Aa1-sergio"
                                 name="contrasenaus">
                         </div>
+                        <style type="text/css" media="screen">
+                            #mensajeAlerta{
+                                color: red;
+                            }
+                        </style>
+                        <%   try{if (!loginmal) {%>
+                            <p id="mensajeAlerta"><b>Email o contraseña incorrectos</b></p>
+                        <% } }catch (e){console.log(e)} %>
 
 
                     </div>

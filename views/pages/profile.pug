@@ -1,4 +1,5 @@
-.ejsdoctype html
+
+doctype html
 html(lang="en")
 head
     meta(charset="UTF-8")
@@ -19,32 +20,60 @@ body
                     p.logo
                         span
                             strong Planet Express 
-                div.register
-                    a(href="./registro")
-                        b Registro 
-                div.place_order
-                    a(href="./place_order")
-                        b Haz un pedido
+                
                 div.tracking
                     a(href="./tracking")
                         b Seguimiento
-                div.contact
-                    a(href="./contact")
-                        b Contacto 
+                 
                 div.welcome
-                    a#nameD(href="./landingPage")
-                        b Bienvenido 
-                    a#diconnectD(href="")
+                     
+                    a#diconnectD(href="./disconect")
                         b Desconectar
     main 
-    footer.Footer-distributed 
+        div.datosEnvio
+                div.datosProfile 
+                
+                        h1 Bienvenido #{login3.nombre}
+                        p Email: #{login3.email}
+                        p DNI: #{login3.dni}
+                        p Telefono: #{login3.telefono}
+                        p Dirección 1: #{login3.direccion1}
+                        p Dirección 2: #{login3.direccion2}
+                        p Dirección 3: #{login3.direccion3}
+                                            
+        div.datosEnvio       
+            div.datosProfile
+                a(href='./place_order')
+                    b Hacer un nuevo envío
+
+
+              
+                    div.enviados
+                    p Paquetes enviados:
+                    
+                        - for(let i = 0; i <enviados.length; i++)
+                            p Id: #{enviados[i]._id}
+                            p Remitente: #{enviados[i].nombre_remitente}
+                            p Peso Paquete: #{enviados[i].datos_paquete.peso}
+                            p Dirección de Destino: #{enviados[i].direccion_destino}
+                            a(href=`./factura/${enviados[i]._id}`) 
+                                b Generar factura
+   
+
+            
+                 
+               
+
+            
+            
+           
+
+
+    footer.footer-distributed
+
         div.footer-left
             p.footer-links 
-                a.link-1(href="./pages/landingPage.ejs") Home 
-                a(href="./login") Iniciar sesión
-                a(href="./registro") Registrarse 
-                a(href="./place_order") Haz un pedido
-                a(href="./tracking") Seguimiento
+                 
                 a(href="./contact") Contacto 
             p.footer-company-name Planet Express © 2022
         div.footer-center
@@ -57,7 +86,12 @@ body
                     a(href="mailto:support@company.com") 02sergioconde@gmail.com
         div.footer-right
             p.footer-company-about #[span About the company: ] Planet express, nació como una alternativa de mensajería urgente que prestaba servicios en Madrid.
-                
+      
+        
+
+
+
+             
                 
                 
 

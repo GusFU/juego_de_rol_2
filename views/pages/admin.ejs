@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Aministrador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Righteous&family=Space+Mono&family=Titan+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="Developer">
+            <nav class="nav">
+                <div class="planetExpress">
+                    <img class="imgPlanet" src="logo.png" />
+                </div>
+
+                <div class="Nombrelogo">
+                    <p class="logo">
+                        <span><strong>Planet Express</strong></span>
+                    </p>
+                </div>
+
+                
+                
+                
+                
+                <div class="welcome">
+                    <a id="disconnectD" href="./disconect"><b>Desconectar</b></a>
+                </div>
+            </nav>
+    </header>
+
+
+    <main>
+        <form action="/registroAdminBorrado" method="POST">
+            <div class="formulario">
+
+                <legend>BORRADO USUARIO</legend>
+                <!-- borrado de usuario -->
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Email</label>
+                        <input id="emailRegistroS" type="email" name="emailBorrado"
+                            placeholder="Introduce el correo a borrar">
+                    </div>
+
+                    <div class="borrar usuario" id="borrarUsuario">
+                        <button class="boton" type="submit" value="Enviar">Borrado</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <form action="/registroAdminActualizacion" method="POST">
+            <div class="formulario">
+                    <legend><br>REGISTRO ACTUALIZACIÓN<br></legend>
+
+                    <div class="contenedor-campos">
+
+
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input id="nombreRegistroS" type="text" name="nameAct"
+                                placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde"
+                                pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
+                        </div>
+
+                        <div class="campo">
+                            <label>DNI</label>
+                            <input id="DNIRegistroS" type="text" name="dniAct"
+                                placeholder="Introduce tu DNI ej. 12345678A">
+                        </div>
+
+
+                        <div class="campo">
+                            <label>Teléfono</label>
+                            <input id="telefoRegistroS" type="tel" name="telefonoAct"
+                                placeholder="Introduce tu Número ej. 681081123"
+                                pattern = "/[0-9]{9}/">
+                        </div>
+
+
+                        <div class="campo">
+                            <label>Email</label>
+                            <input id="emailRegistroS" type="email" name="emailAct" placeholder="Introduce tu email">
+                        </div>
+
+                        <div class="campo">
+                            <label>Dirección 1</label>
+                            <input id="direccion1" type="text" name="direccionAct" placeholder="Introduce tu dirección"
+                            pattern="^[a-zA-Z0-9_ ]*$">
+                        </div>
+
+                        <div class="campo">
+                            <label>Dirección 2</label>
+                            <input id="direccion2" type="text" name="direccionAct" placeholder="Introduce tu dirección"
+                            pattern="^[a-zA-Z0-9_ ]*$">
+                        </div>
+
+                        <div class="campo">
+                            <label>Dirección 3</label>
+                            <input id="direccion3" type="text" name="direccionAct" placeholder="Introduce tu dirección"
+                            pattern="^[a-zA-Z0-9_ ]*$">
+                        </div>
+
+                        <div class="campo">
+                            <label>Contraseña</label>
+                            <input id="contrasena" type="text" name="contrasenaAct"
+                                placeholder="Introduce tu contraseña">
+                        </div>
+
+                        <div class="enviar" id="mensajeErrorS">
+                            <button class="boton" type="submit" value="Enviar">Actualizar</button>
+                        </div>
+
+                    </div>
+                </div>
+        </form>
+        </div>
+        <form action="/ordersBorrado" method="POST">
+            <div class="formulario">
+                <fieldset id="formularioM">
+                    <legend>CANCELAR PEDIDO CON TRACKING</legend>
+
+                    <div class="contenedor-campos">
+
+
+                        <div class="campo">
+                            <label>Número de Tracking</label>
+                            <input id="tracking" type="text" name="cancelarPedidoTracking"
+                                placeholder="Introduce tu número de Tracking">
+                        </div>
+
+
+                    </div>
+                    <div class="enviar">
+                        <button type="submit" class="boton">Buscar pedido</button>
+                        <br><br>
+
+
+                    </div>
+
+            </div>
+            </fieldset>
+        </form>
+
+
+
+        <form action="/place_order_actualizado_origen" method="POST">
+            <div class="formulario_placeOrder">
+                <div class="formulario" id="form">
+                    <fieldset id="formularioM">
+
+                        <legend>ORIGEN ACTUALIZACIÓN</legend>
+
+                        <div class="contenedor-campos">
+
+
+
+                            <div class="campo">
+                                <label>Número de Tracking</label>
+                                <input id="tracking" name="trackingOrigenActualizacion" type="text"
+                                    placeholder="Introduce tu número de Tracking">
+                            </div>
+
+                            <div class="campo">
+                                <label>Direccion</label>
+                                <input id="direccion_origen" type="text" name="direccionOrigen"
+                                    placeholder="Introduce la dirección de origen"
+                                    pattern="^[a-zA-Z0-9_ ]*$">
+                            </div>
+
+                            <div class="campo">
+                                <label>Código Postal</label>
+                                <input id="codigoPostal_origen" type="number" name="codigoPostalOrigen"
+                                    placeholder="Introduce tu CP">
+                            </div>
+                            <div class="enviar">
+                                <button type="submit" class="boton">Actualizar</button>
+                                <br><br>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+
+        <form action="/place_order_actualizado_destino" method="POST">
+            <div class="formulario_placeOrder">
+                <div class="formulario" id="form">
+                    <fieldset id="formularioM">
+
+                        <legend>DESTINO ACTUALIZACIÓN</legend>
+
+                        <div class="contenedor-campos">
+
+
+
+                            <div class="campo">
+                                <label>Número de Tracking</label>
+                                <input id="tracking" name="trackingDestinoActualizacion" type="text"
+                                    placeholder="Introduce tu número de Tracking">
+                            </div>
+
+                            <div class="campo">
+                                <label>Nombre destinatario</label>
+                                <input id="codigoPostal_origen" type="text" name="nombreDestinatario"
+                                    placeholder="Introduce el nombre del destinatario"
+                                    pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
+                            </div>
+
+                            <div class="campo">
+                                <label>Telefono destinatario</label>
+                                <input id="telefono_destino" name="telefonoDestinatario" type="text"
+                                    placeholder="Introduce el teléfono del destinatario"
+                                    pattern = "/[0-9]{9}/">
+                            </div>                            
+
+                            <div class="campo">
+                                <label>Direccion</label>
+                                <input id="direccion_origen" type="text" name="direccionDestino"
+                                    placeholder="Introduce tu Dirección"
+                                    pattern="/[a-zA-Z0-9]{300}/">
+                            </div>
+
+                            <div class="campo">
+                                <label>Código Postal</label>
+                                <input id="codigoPostal_origen" type="number" name="codigoPostalDestino"
+                                    placeholder="Introduce tu CP">
+                            </div>
+
+
+
+                            <div class="enviar">
+                                <button type="submit" class="boton">Actualizar</button>
+                                <br><br>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        
+        <form action="/place_order_actualizado_paquete" method="POST">
+            <div class="formulario" id="form">
+                <legend>CARACTERISTICAS DEL PAQUETE ACTUALIZACIÓN</legend>
+
+                <div class="contenedor">
+                    <div class="campo">
+                        <label>Número de Tracking</label>
+                        <input id="tracking" name="idTrackingPaquete" type="text" placeholder="Introduce tu número de Tracking">
+                    </div>
+                </div>
+                
+                <div class="campo">
+                    <label>Peso (kg)</label>
+                    <input type="number" id="pes" name="pesoAct" placeholder="Ej: 5" required>
+                </div>
+                <div class="campo">
+                    <label>Alto (cm)</label>
+                    <input type="number" id="alt" name="altoAct" placeholder="Ej: 60" required>
+                </div>
+                <div class="campo">
+                    <label>Largo (cm)</label>
+                    <input type="number" id="larg" name="largoAct" placeholder="Ej: 60" required>
+                </div>
+                <div class="campo">
+                    <label>Ancho (cm)</label>
+                    <input type="number" id="anch" name="anchoAct" placeholder="Ej: 30" required>
+                </div>
+                <div class="enviar">
+                    <button type="submit" class="boton">Actualizar</button>
+                    <br><br>
+                </div>
+            </div>
+        </form>
+
+
+    </main>
+
+    <footer class="footer-distributed">
+
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+
+</html>

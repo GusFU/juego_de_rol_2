@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "direccion": "Puerta del Sol",
+        "latitud": "40.41715509829304",
+        "longitud": "-3.7035799616750373"
+    },
+    {
+        "id": "2",
+        "direccion": "Puerta de Alcalá", 
+        "latitud": "40.42032494779157",
+        "longitud": "-3.688926949347129"
+    },
+    {
+        "id": "3",
+        "direccion": "Torres Quevedo", 
+        "latitud": " 40.44249858822433",
+        "longitud": "-3.6856879733694616"
+    },
+    {
+        "id": "4",
+        "direccion": "Santiago Bernabeu",
+        "latitud": "40.45328732473868",
+        "longitud": "-3.6883148533394263"
+    }
+]

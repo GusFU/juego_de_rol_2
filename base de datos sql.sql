@@ -8,19 +8,16 @@ USE Personas;
 CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
-    dni CHAR(9) UNIQUE NOT NULL,
+    dni CHAR(9) NOT NULL,
     administrador BOOLEAN NOT NULL,
     telefono VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    email VARCHAR(100) unique NOT NULL,
     direccion1 VARCHAR(500) NOT NULL,
-    direccion2 VARCHAR(500),
-    direccion3 VARCHAR(500),
+    direccion2 VARCHAR(500) default null,
+    direccion3 VARCHAR(500)default null,
     contrasena VARCHAR(100) NOT NULL,
     PRIMARY KEY(id)
 );
-INSERT INTO Usuarios VALUES(NULL,"sergio aaa ddd","12345678a",false,123456789,"kkkkkk@kkkk.com","recoletos 15",null,null,"1234");
-INSERT INTO Usuarios VALUES(NULL,"gustavo aaa ddd","87654321a",false,123456789,"gggggggg@kkkk.com","recoletos 112",null,null,"1234");
-select * from Usuarios;
 
 #DROP TABLE Logins;
 CREATE TABLE Login (
@@ -31,25 +28,58 @@ CREATE TABLE Login (
     PRIMARY KEY(id),
     FOREIGN KEY(fk_id_usuario) REFERENCES Usuarios(id)
 );
-insert into Login values(null,"kkkkkk@kkkk.com","1234",1);
-insert into Login values(null,"gggggggg@kkkk.com","1234",3);
-select * from Login;
-#DROP TABLE Tarjetas
-CREATE TABLE Tarjetas (
+
+
+
+
+INSERT INTO Usuarios VALUES(NULL,"Sergio Conde Alcalde","50892007e",true,663538912,"02sergioconde@gmailcom","recoletos 15",null,null,sha("Aa1-sergio"));
+
+
+#DROP TABLE Facturas
+CREATE TABLE Facturas (
     id INT AUTO_INCREMENT,
-    nombre_tarjeta VARCHAR(300) NOT NULL,
-    fecha_caducidad DATE NOT NULL,
-    cvv CHAR(3) NOT NULL,
     num_tarjeta CHAR(16) NOT NULL,
-    PRIMARY KEY(id)
+    importe int,
+    fecha date,
+    id_paquete int,
+    fk_id_usuario int,
+    PRIMARY KEY(id),
+    foreign key(fk_id_usuario) REFERENCES Usuarios(id)
 );
 
-#DROP TABLE tarjetas_usuarios;
-CREATE TABLE tarjetas_usuarios(
-    id INT AUTO_INCREMENT,
-    fk_id_tarjeta INT,
-    fk_id_usuario INT,
-    PRIMARY KEY(id),
-    FOREIGN KEY(fk_id_usuario) REFERENCES Usuarios(id),
-    FOREIGN KEY(fk_id_tarjeta) REFERENCES Tarjetas(id)
-);
+DELIMITER //
+CREATE TRIGGER borraUsuario
+AFTER DELETE ON login 
+FOR EACH ROW 
+BEGIN
+	DELETE FROM Usuarios WHERE email = OLD.email ;
+    END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER ActualizarUsuario
+AFTER UPDATE ON Usuarios
+FOR EACH ROW 
+BEGIN
+	UPDATE Login SET email = new.email, contrasena = new.contrasena WHERE new.id = fk_id_usuario ;
+    END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER ejemploAntesActualizar
+after insert ON Usuarios
+FOR EACH ROW 
+BEGIN
+	
+	INSERT INTO Login VALUES (NULL, new.email, new.contrasena,new.id);
+    
+END //
+DELIMITER ;
+
+select * from Login;
+select * from Usuarios;
+
+
+
+
+

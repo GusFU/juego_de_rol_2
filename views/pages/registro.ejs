@@ -22,15 +22,11 @@
                 <div class="login">
                     <a href="./login"><b>Inicio de sesion</b></a>
                 </div>
-                <div class="place_order">
-                    <a href="./place_order"><b>Haz un pedido</b></a>
-                </div>
+                
                 <div class="tracking">
                     <a href="./tracking"><b>Seguimiento</b></a>
                 </div>
-                <div class="contact">
-                    <a href="./contact"><b>Contacto</b></a>
-                </div>
+               
                 <div class="welcome">
                     <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
                 </div>
@@ -44,18 +40,26 @@
                 <legend>REGISTRO</legend>
 
                 <div class="contenedor-campos">
-
-
+                    <style type="text/css" media="screen">
+                        #mensajeAlerta{
+                            color: red;
+                        }
+                    </style>
+                    <%   try{if (!loginmal) {%>
+                        <p id="mensajeAlerta"><b>Ya existe un usuario registrado con este email</b></p>
+                    <% } }catch (e){console.log(e)} %>
                     <div class="campo">
-                        <label>Nombre</label>
+                        <label>Nombre y Apellidos</label>
                         <input id="nombreRegistroS" type="text" name="name1"
-                            placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde">
+                            placeholder="Introduce tu Nombre y Apellidos ej. Sergio Conde Alcalde"
+                            pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
                     </div>
 
                     <div class="campo">
                         <label>DNI</label>
                         <input id="DNIRegistroS" type="text" name="dni1"
-                        placeholder="Introduce tu DNI ej. 12345678A">
+                        placeholder="Introduce tu DNI ej. 12345678A"
+                        pattern="/(^[0-9]{8})([-]?)([A-Za-z]{1})$/">
                     </div>
 
 
@@ -65,34 +69,39 @@
                     <div class="campo">
                         <label>Teléfono</label>
                         <input id="telefoRegistroS" type="tel" name="telefono1"
-                        placeholder="Introduce tu Número ej. 681081123">
+                        placeholder="Introduce tu Número ej. 681081123"
+                        type="tel">
                     </div>
 
 
                     <div class="campo">
                         <label>Email</label>
                         <input id="emailRegistroS" type="email"  name="email1" 
-                        placeholder="Introduce tu email">
+                        placeholder="Introduce tu email Ej: 02sergioconde@gmail.com">
                     </div>
 
                     <div class="campo">
                         <label>Dirección 1</label>
-                        <input id="direccion1" type="text" name="direccion1" placeholder="Introduce tu dirección">
+                        <input id="direccion1" type="text" name="direccion1" placeholder="Introduce tu dirección"
+                        pattern= "^[a-zA-Z0-9_ ]*$" >
                     </div>
 
                     <div class="campo">
                         <label>Dirección 2</label>
-                        <input id="direccion2" type="text"  name="direccion2" placeholder="Introduce tu dirección">
+                        <input id="direccion2" type="text"  name="direccion2" placeholder="Introduce tu dirección"
+                        pattern= "^[a-zA-Z0-9_ ]*$" >
                     </div>
 
                     <div class="campo">
                         <label>Dirección 3</label>
-                        <input id="direccion3" type="text" name="direccion3"placeholder="Introduce tu dirección">
+                        <input id="direccion3" type="text" name="direccion3"placeholder="Introduce tu dirección"
+                        pattern= "^[a-zA-Z0-9_ ]*$">
                     </div>
 
                     <div class="campo">
                         <label>Contraseña</label>
-                        <input id="contrasena" type="text" name="contrasena1"placeholder="Introduce tu contraseña">
+                        <input id="contrasena" type="password" name="contrasena1"placeholder="Introduce tu contraseña Ej:Aa1-sergio"
+                        pattern="^[a-zA-Z0-9_-]{1,30}">
                     </div>
 
                     <div class="enviar" id="mensajeErrorS">

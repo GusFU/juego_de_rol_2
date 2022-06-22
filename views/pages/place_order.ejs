@@ -3,6 +3,7 @@
 
 <head>
     <%- include('../partials/head.ejs'); %>
+
 </head>
 
 <body>
@@ -19,23 +20,16 @@
                     </p>
                 </div>
 
-                <div class="register">
-                    <a href="./registro"><b>Registro</b></a>
-                </div>
-                <div class="place_order">
-                    <a href="./place_order"><b>Haz un pedido</b></a>
-                </div>
+                
+                
                 <div class="tracking">
                     <a href="/tracking"><b>Seguimiento</b></a>
+                
                 </div>
-                <div class="contact">
-                    <a href="./contact"><b>Contacto</b></a>
-                </div>
-
 
                 <div class="welcome">
-                    <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
-                    <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
+                    
+                    <a id="disconnectD" href="./disconect" ><b>Desconectar</b></a>
                 </div>
             </nav>
     </header>
@@ -51,37 +45,21 @@
 
                         <div class="contenedor-campos">
 
-                            <!-- <div class="campo">
-                            <label>Nombre</label>
-                            <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
-                        </div> -->
+                           
 
                             <div class="campo">
                                 <label>Direccion</label>
                                 <input id="direccion_origen" type="text" name="direccionOrigen"
-                                    placeholder="Introduce tu Dirección">
+                                    placeholder="Introduce tu Dirección"
+                                    pattern="^[a-zA-Z0-9_ ]*$">
                             </div>
 
                             <div class="campo">
                                 <label>Código Postal</label>
-                                <input id="codigoPostal_origen" type="text" name="codigoPostal"
+                                <input id="codigoPostal_origen" type="number" name="codigoPostal"
                                     placeholder="Introduce tu CP">
                             </div>
 
-                            <!--   <div class="campo">
-                            <label>Pais</label>
-                            <input id="pais_origen" type="text" placeholder="Introduce tu Pais">
-                        </div> -->
-
-                            <!--   <div class="campo">
-                            <label>Ciudad</label>
-                            <input id="ciudad_origen" type="text" placeholder="Introduce tu Ciudad">
-                        </div> -->
-
-                            <!--  <div class="campo">
-                            <label>Municipio</label>
-                            <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
-                        </div> -->
                         </div>
                     </fieldset>
                 </div>
@@ -96,42 +74,28 @@
                             <div class="campo">
                                 <label>Nombre</label>
                                 <input id="nombre_destino" type="text" name="nombreDestino"
-                                    placeholder="Introduce tu Nombre">
+                                    placeholder="Introduce tu Nombre"
+                                    pattern="^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$">
                             </div>
                             <div class="campo">
                                 <label>Teléfono</label>
-                                <input id="telefono_destino" type="text" name="telefonoDestino"
+                                <input id="telefono_destino" type="tel" name="telefonoDestino"
                                     placeholder="Introduce el telefono del destinatario">
                             </div>
 
                             <div class="campo">
                                 <label>Direccion</label>
                                 <input id="direccion_destino" type="text" name="direccionDestino"
-                                    placeholder="Introduce tu Dirección">
+                                    placeholder="Introduce tu Dirección"
+                                    pattern="^[a-zA-Z0-9_ ]*$">
                             </div>
 
                             <div class="campo">
                                 <label>Código Postal</label>
-                                <input id="codigoPostal_origen" type="text" name="codigoPostalDestino"
+                                <input id="codigoPostal_origen" type="number" name="codigoPostalDestino"
                                     placeholder="Introduce tu CP">
                             </div>
 
-
-
-                            <!-- <div class="campo">
-                            <label>Pais</label>
-                            <input id="pais_origen" type="text" placeholder="Introduce tu Pais">
-                        </div>
-
-                        <div class="campo">
-                            <label>Ciudad</label>
-                            <input id="ciudad_origen" type="text" placeholder="Introduce tu Ciudad">
-                        </div>
-
-                        <div class="campo">
-                            <label>Municipio</label>
-                            <input id="nombre_origen" type="text" placeholder="Introduce tu Nombre">
-                        </div> -->
                         </div>
                     </fieldset>
                 </div>
@@ -149,17 +113,17 @@
                     </div>
 
                     <div class="campo">
-                        <label>Alto (cm)</label>
+                        <label>Alto (m)</label>
                         <input type="number" id="alt" name="alto" placeholder="Ej: 60" required>
                     </div>
 
                     <div class="campo">
-                        <label>Largo (cm)</label>
+                        <label>Largo (m)</label>
                         <input type="number" id="larg" name="largo" placeholder="Ej: 60" required>
                     </div>
 
                     <div class="campo">
-                        <label>Ancho (cm)</label>
+                        <label>Ancho (m)</label>
                         <input type="number" id="anch" name="ancho" placeholder="Ej: 30" required>
                     </div>
 
@@ -176,6 +140,7 @@
 
         </form>
     </main>
+
 
 
     <footer class="footer-distributed">

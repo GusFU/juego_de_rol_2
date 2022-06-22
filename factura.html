@@ -7,6 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <style type="text/css" media="screen">
+        body {
+          
+            background-color: aqua;
+        }
+    </style> -->
     <title>Factura</title>
 </head>
 
@@ -17,7 +23,8 @@
                 <h1>Factura</h1>
             </div>
             <div class="col-xs-2">
-                <img class="img img-responsive" src="https://i.pinimg.com/originals/d3/78/9b/d3789b993faa1f42d18e155b715152fb.jpg" alt="Logotipo">
+                <img class="img img-responsive"
+                    src="https://i.pinimg.com/originals/d3/78/9b/d3789b993faa1f42d18e155b715152fb.jpg" alt="Logotipo">
             </div>
         </div>
         <hr>
@@ -26,9 +33,10 @@
                 <h1 class="h6"></h1>
                 <h1 class="h6"></h1>
             </div>
-            <div class="col-xs-2 text-center">
+            <div class="col-xs-10 text-center">
                 <strong>Fecha</strong>
-                <br> <p>{{fecha}}</p>
+                <br>
+                <p>{{fecha}}</p>
                 <br>
                 <strong>Identificador de factura</strong>
                 <br>
@@ -39,7 +47,7 @@
         <div class="row text-center" style="margin-bottom: 2rem;">
             <div class="col-xs-6">
                 <h1 class="h2">Cliente</h1>
-                <strong></strong>
+                <strong>{{cliente}}</strong>
             </div>
             <div class="col-xs-6">
                 <h1 class="h2">Remitente</h1>
@@ -52,9 +60,10 @@
                     <thead>
                         <tr>
                             <th>Descripción</th>
-                            <th>Cantidad</th>
-                            <th>Precio unitario</th>
-                            <th>Total</th>
+                            <th>Peso</th>
+                            
+                            <th>Precio</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +71,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3" class="text-right">Subtotal</td>
+                            <td colspan="3" class="text-right">Importe sin impuestos</td>
                             <td>{{subtotal}}</td>
                         </tr>
                         <!-- <tr>
@@ -95,7 +104,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 
 </html>

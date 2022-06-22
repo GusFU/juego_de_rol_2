@@ -41,6 +41,7 @@ body {
   transform: scale(1.5);
 }
 
+
 .nav {
   width: 100%;
   display: flex;
@@ -408,6 +409,7 @@ textarea {
 #importePago {
   font-size: larger;
 }
+
 label {
   font-size: 2rem;
 }
@@ -462,6 +464,21 @@ input {
 
 
 /* PROFILE */
+.datosEnvio{
+  display:flex;
+  justify-content: center;
+}
+.datosProfile {
+  margin: 2%;
+  box-shadow: 0px 0px 50px 10px #2574FB;
+  border: solid 3px black;
+  border-radius: 3rem;
+  text-align: center;
+  width: 40%;
+  background-image: linear-gradient(to right, rgb(106, 17, 203) 0%, rgb(37, 117, 252) 100%);
+
+}
+
 
 /* FIN PROFILE */
 
@@ -481,5 +498,9 @@ input {
 
 
 }
+
+
+/* ADMIN PAGINA ADMIN */
+
 
 /* FIN THANKS */
