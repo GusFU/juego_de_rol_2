@@ -49,7 +49,7 @@
                 <div class="contact">
                     <a href="./contact"><b>Contacto</b></a>
                 </div>
-            
+
                 <div class="welcome">
                     <a href="./landingPage" id="nameD"><b>Bienvenido</b></a>
                     <a id="disconnectD" href="" onclick="desconectarD();"><b>Desconectar</b></a>
@@ -59,49 +59,51 @@
 
 
     <main>
-        <form action="/orders" method="POST">
-            <div class="formulario">
-                <fieldset id="formularioM">
-                    <legend>TRACKING</legend>
+        <!-- action="/orders" method="POST" -->
+        <!-- <form > -->
+        <div class="formulario">
+            <fieldset id="formularioM">
+                <legend>TRACKING</legend>
 
-                    <div class="contenedor-campos">
-
-
-                        <div class="campo">
-                            <label>Número de Tracking</label>
-                            <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
-                        </div>
+                <div class="contenedor-campos">
 
 
-                    </div>
-                    <div class="enviar">
-                        <button type="submit" class="boton">Enviar</button>
-                        <br><br>
-
-
-
-
+                    <div class="campo">
+                        <label>Número de Tracking</label>
+                        <input id="tracking" type="text" placeholder="Introduce tu número de Tracking">
                     </div>
 
-            </div>
-            </fieldset>
-        </form>
+
+                </div>
+                <div class="enviar">
+                    <button onclick="searchPackage()" class="boton">Rastrear</button>
+                    <!-- type="submit" -->
+                    <br><br>
+
+
+
+
+                </div>
+
+        </div>
+        </fieldset>
+        <!-- </form> -->
 
     </main>
-    <section >
+    <section>
 
-		<!-- <div class="searchMap">
+        <!-- <div class="searchMap">
 			<input type="text" id="cityName">
 			<button onclick="searchCity();">Buscar Ciudad</button>
 		</div> -->
-		<div id="map"></div>
+        <div id="map"></div>
 
-	</section>
-   
+    </section>
+
     <footer class="footer-distributed">
-  
+
         <%- include('../partials/footer'); %>
-      </footer>
+    </footer>
     <script src="mapa.js"></script>
 </body>
 
