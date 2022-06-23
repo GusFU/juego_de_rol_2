@@ -59,7 +59,7 @@
                         <label>DNI</label>
                         <input id="DNIRegistroS" type="text" name="dni1"
                         placeholder="Introduce tu DNI ej. 12345678A"
-                        pattern="/(^[0-9]{8})([-]?)([A-Za-z]{1})$/">
+                        pattern="(^[0-9]{8})([-]?)([A-Za-z]{1})$">
                     </div>
 
 
@@ -69,15 +69,16 @@
                     <div class="campo">
                         <label>Teléfono</label>
                         <input id="telefoRegistroS" type="tel" name="telefono1"
-                        placeholder="Introduce tu Número ej. 681081123"
-                        type="tel">
+                        placeholder="Introduce tu Número ej. 681081123" type="tel"
+                        pattern="[0-9]{9}">
                     </div>
 
 
                     <div class="campo">
                         <label>Email</label>
                         <input id="emailRegistroS" type="email"  name="email1" 
-                        placeholder="Introduce tu email Ej: 02sergioconde@gmail.com">
+                        placeholder="Introduce tu email Ej: 02sergioconde@gmail.com"
+                        pattern="^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$">
                     </div>
 
                     <div class="campo">
@@ -100,8 +101,14 @@
 
                     <div class="campo">
                         <label>Contraseña</label>
+                        <p id="contrasenaRegistro">La contraseña debe contenter una mayuscula una minuscula un numero y un caracter.</p>
+                        <style type="text/css" media="screen">
+                            #contrasenaRegistro{
+                                color: white;
+                            }
+                        </style>
                         <input id="contrasena" type="password" name="contrasena1"placeholder="Introduce tu contraseña Ej:Aa1-sergio"
-                        pattern="^[a-zA-Z0-9_-]{1,30}">
+                        pattern="^(?=^.{6,}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*">
                     </div>
 
                     <div class="enviar" id="mensajeErrorS">

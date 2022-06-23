@@ -10,9 +10,8 @@ const connection = mysql.createConnection({
     database: 'Personas'
 });
 //variables
-
+var contador
 var loginmal = false;
-var login3;
 var datosEnvioOrigen;
 var datosEnvioDestino;
 var datosPaquete;
@@ -21,7 +20,7 @@ var importe = 0;
 var hoy;
 var idPaquete;
 var myobj;
-var info_usuarios;
+
 
 //express, pug, body parser
 const express = require('express');
@@ -69,17 +68,19 @@ app.get('/contact', urlencodedParser, (req, res) => {
     res.render('./pages/contact.ejs');
 });
 app.get('/disconect', urlencodedParser, (req, res) => {
-     loginmal = true;
-     login3=0;
-     datosEnvioOrigen=0;
-     datosEnvioDestino=0;
-     datosPaquete=0;
-     datosPago=0;
-     importe = 0;
-     hoy=0;
-     idPaquete=0;
-     myobj=0;
-     info_usuarios=0;
+
+login1=0
+login2=0
+login3=0
+    datosEnvioOrigen = 0;
+    datosEnvioDestino = 0;
+    datosPaquete = 0;
+    datosPago = 0;
+    importe = 0;
+    hoy = 0;
+    idPaquete = 0;
+    myobj = 0;
+
 
 
     res.render('./pages/landingPage.ejs');
@@ -92,37 +93,45 @@ app.post('/login', urlencodedParser, (req, res) => { //CONEXION CON SQL DB
     let query = 'SELECT * from Login';
     connection.query(query, async (err, rows) => {
         if (err) throw err;
-        info_login = await rows;
+        var info_login = await rows;
 
         let comprobacion = funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).encontrado;
-        console.log("encontrado" + funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).encontrado)
-        console.log("contador" + funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).contador)
+
         if (comprobacion) {
 
-            login3 = rows[funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).contador]
-            MongoClient.connect(url, function (err, db) {
+
+
+            let query = 'SELECT * from Usuarios';
+            connection.query(query, async (err, rows1) => {
                 if (err) throw err;
-                var dbo = db.db(mydb);
+
+                var login1 = rows1[funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).contador]
+                contador = [funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).contador]
+
+               
+
+
+
 
 
 
                 MongoClient.connect(url, function (err, db) {
                     if (err) throw err;
                     var dbo = db.db(mydb);
-                    var query = { "idUsuario": `${login3.id}` };
+                    var query = { "idUsuario": `${login1.id}` };
                     dbo.collection(coleccion).find(query).toArray(async function (err, result) {
                         if (err) throw err;
 
                         db.close();
-                        if (login3.administrador) {
+                        if (login1.administrador) {
                             res.render('./pages/admin.ejs');
                         } else {
 
-                            res.render('./pages/profile.pug', { "login3": login3, "enviados": result });
+                            res.render('./pages/profile.pug', { "login3": login1, "enviados": result });
                         }
                     });
                 });
-            })
+            });
 
         } else {
 
@@ -132,13 +141,7 @@ app.post('/login', urlencodedParser, (req, res) => { //CONEXION CON SQL DB
             res.render('./pages/login.ejs', { "loginmal": loginmal })
         }
 
-        let query = 'SELECT * from Usuarios';
-        connection.query(query, async (err, rows1) => {
-            if (err) throw err;
 
-            login3 = rows1[funciones.confirmarLogin(req.body.emailus, req.body.contrasenaus, await info_login).contador]
-
-        });
     });
 });
 app.post('/registro', urlencodedParser, (req, res) => {
@@ -153,47 +156,57 @@ app.post('/registro', urlencodedParser, (req, res) => {
             const sql = `INSERT INTO Usuarios  VALUES (null,"${req.body.name1}","${req.body.dni1}",false,"${req.body.telefono1}","${req.body.email1}","${req.body.direccion1}","${req.body.direccion2}","${req.body.direccion3}",SHA("${req.body.contrasena1}"))`;
             connection.query(sql, (err, response, fields) => {
                 if (err) throw err;
-
-                res.render('./pages/login.ejs');
+                var registrook = true
+                res.render('./pages/login.ejs', { "registrado": registrook });
             });
 
 
         } else {
-            res.render('./pages/registro.ejs',{"loginmal": loginmal})
+            res.render('./pages/registro.ejs', { "loginmal": loginmal })
         }
     });
 });
 app.post('/place_order', urlencodedParser, (req, res) => {
     //coge los datos inputs del formulario de origen
-    datosEnvioOrigen = {
-        "nombre": `${login3.nombre}`,
-        "dni": `${login3.dni}`,
-        "telefono": `${login3.telefono}`,
-        "email": `${login3.email}`,
-        "direccion": `${req.body.direccionOrigen}`,
-        "cp": `${req.body.codigoPostal}`
-    };
-    console.log(login3)
-    //localStorage.setItem('envio', JSON.stringify(datosEnvioOrigen))
-    //coge los datos inputs del formulario de destino
-    datosEnvioDestino = {
-        "nombre": `${req.body.nombreDestino}`,
-        "telefono": `${req.body.telefonoDestino}`,
-        "dni": `${login3.dni}`,
-        "direccion": `${req.body.direccionDestino}`,
-        "cp": `${req.body.codigoPostalDestino}`
-    };
-    datosPaquete = {
-        "peso": `${req.body.peso}`,
-        "alto": `${req.body.alto}`,
-        "largo": `${req.body.largo}`,
-        "ancho": `${req.body.ancho}`
-    }
-    importe = funciones.precio(req.body.peso, req.body.alto, req.body.largo, req.body.ancho);
 
-    //valor es el nombre de la clave del JSON
-    res.render('./pages/pago.ejs', { valor: ` ${importe} €` })
-    return datosEnvioOrigen;
+    let query = 'SELECT * from Usuarios';
+    connection.query(query, async (err, rows1) => {
+        if (err) throw err;
+
+        var login2 = rows1[contador]
+
+
+
+        datosEnvioOrigen = {
+            "nombre": `${login2.nombre}`,
+            "dni": `${login2.dni}`,
+            "telefono": `${login2.telefono}`,
+            "email": `${login2.email}`,
+            "direccion": `${req.body.direccionOrigen}`,
+            "cp": `${req.body.codigoPostal}`
+        };
+
+        //localStorage.setItem('envio', JSON.stringify(datosEnvioOrigen))
+        //coge los datos inputs del formulario de destino
+        datosEnvioDestino = {
+            "nombre": `${req.body.nombreDestino}`,
+            "telefono": `${req.body.telefonoDestino}`,
+            "dni": `${login2.dni}`,
+            "direccion": `${req.body.direccionDestino}`,
+            "cp": `${req.body.codigoPostalDestino}`
+        };
+        datosPaquete = {
+            "peso": `${req.body.peso}`,
+            "alto": `${req.body.alto}`,
+            "largo": `${req.body.largo}`,
+            "ancho": `${req.body.ancho}`
+        }
+        importe = funciones.precio(req.body.peso, req.body.alto, req.body.largo, req.body.ancho);
+
+        //valor es el nombre de la clave del JSON
+        res.render('./pages/pago.ejs', { valor: ` ${importe} €` })
+        return datosEnvioOrigen;
+    });
 });
 //PAGO, al darle a pagar tiene que insertarse en la BBDD de SQL.
 //El numero de targeta 
@@ -213,63 +226,68 @@ app.post('/pago', urlencodedParser, (req, res1) => {
 
 
 
-
-
-
-
-
-
-    //Insertar dentro de una coleccion de una BD
-    MongoClient.connect(url, async function (err, db) {
+    let query = 'SELECT * from Usuarios';
+    connection.query(query, async (err, rows1) => {
         if (err) throw err;
-        var dbo = db.db(mydb);
-        myobj = {
-            "idUsuario": `${login3.id}`,
-            "nombre_remitente": `${datosEnvioOrigen.nombre}`,
-            "direccion_origen": `${datosEnvioOrigen.direccion}`,
-            "cp_origen": `${datosEnvioOrigen.cp}`,
-            "nombre_destinatario": `${datosEnvioDestino.nombre}`,
-            "telefono_destinatario": `${datosEnvioDestino.telefono}`,
-            "direccion_destino": `${datosEnvioDestino.direccion}`,
-            "cp_destino": `${datosEnvioDestino.cp}`,
-            "datos_paquete": datosPaquete,
-            "importe": importe,
 
-        };
+        var login3 = await rows1[contador]
 
 
-        dbo.collection(coleccion).insertOne(myobj, async function (err, res) {
+
+
+
+        //Insertar dentro de una coleccion de una BD
+        MongoClient.connect(url, async function (err, db) {
             if (err) throw err;
+            var dbo = db.db(mydb);
+            myobj = {
+                "idUsuario": `${login3.id}`,
+                "nombre_remitente": `${datosEnvioOrigen.nombre}`,
+                "direccion_origen": `${datosEnvioOrigen.direccion}`,
+                "cp_origen": `${datosEnvioOrigen.cp}`,
+                "nombre_destinatario": `${datosEnvioDestino.nombre}`,
+                "telefono_destinatario": `${datosEnvioDestino.telefono}`,
+                "direccion_destino": `${datosEnvioDestino.direccion}`,
+                "cp_destino": `${datosEnvioDestino.cp}`,
+                "datos_paquete": datosPaquete,
+                "importe": importe,
+
+            };
 
 
-            dbo.collection(coleccion).findOne(myobj, await async function (err, result) {
+            dbo.collection(coleccion).insertOne(myobj, async function (err, res) {
                 if (err) throw err;
-                idPaquete = await result._id
-                hoy = new Date();
-                console.log(hoy)
-                let query2 = `INSERT INTO Facturas (id,num_tarjeta,importe,fecha,id_paquete,fk_id_usuario)VALUES (null,'${req.body.numTarjeta}','${importe}','${hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate()}','${await idPaquete}',null)`;
-                connection.query(query2, (err, response) => {
+
+
+                dbo.collection(coleccion).findOne(myobj, await async function (err, result) {
                     if (err) throw err;
-                    console.log(response.insertId);
-                    db.close();
-                    connection.end();
-
-                    MongoClient.connect(url, function (err, db) {
+                    idPaquete = await result._id
+                    hoy = new Date();
+                    console.log(hoy)
+                    let query2 = `INSERT INTO Facturas (id,num_tarjeta,importe,fecha,id_paquete,fk_id_usuario)VALUES (null,'${req.body.numTarjeta}','${importe}','${hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate()}','${await idPaquete}',null)`;
+                    connection.query(query2, (err, response) => {
                         if (err) throw err;
-                        var dbo = db.db(mydb);
-                        var query = { "idUsuario": `${login3.id}` };
-                        dbo.collection(coleccion).find(query).toArray(async function (err, result) {
+                        console.log(response.insertId);
+                        db.close();
+                        connection.end();
+
+                        MongoClient.connect(url, function (err, db) {
                             if (err) throw err;
+                            var dbo = db.db(mydb);
+                            var query = { "idUsuario": `${login3.id}` };
+                            dbo.collection(coleccion).find(query).toArray(async function (err, result) {
+                                if (err) throw err;
 
-                            db.close();
-                            res1.render('./pages/profile.pug', { "login3": login3, "enviados": result });
+                                db.close();
+                                res1.render('./pages/profile.pug', { "login3": login3, "enviados": result });
+                            });
+
                         });
-
                     });
+
                 });
 
             });
-
         });
 
     });

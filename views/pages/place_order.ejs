@@ -19,13 +19,12 @@
                         <span><strong>Planet Express</strong></span>
                     </p>
                 </div>
+                <form action="/login" method="POST">
 
+                </form>
                 
                 
-                <div class="tracking">
-                    <a href="/tracking"><b>Seguimiento</b></a>
-                
-                </div>
+               
 
                 <div class="welcome">
                     
@@ -57,7 +56,8 @@
                             <div class="campo">
                                 <label>Código Postal</label>
                                 <input id="codigoPostal_origen" type="number" name="codigoPostal"
-                                    placeholder="Introduce tu CP">
+                                    placeholder="Introduce tu CP"
+                                    pattern="^[0-9]{5}">
                             </div>
 
                         </div>
@@ -80,7 +80,8 @@
                             <div class="campo">
                                 <label>Teléfono</label>
                                 <input id="telefono_destino" type="tel" name="telefonoDestino"
-                                    placeholder="Introduce el telefono del destinatario">
+                                    placeholder="Introduce el telefono del destinatario"
+                                    pattern="^[0-9]{9">
                             </div>
 
                             <div class="campo">

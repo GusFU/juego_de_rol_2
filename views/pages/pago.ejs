@@ -19,9 +19,7 @@
                     </p>
                 </div>
 
-                <div class="tracking">
-                    <a href="./tracking"><b>Seguimiento</b></a>
-                </div>
+              
                 <div class="welcome">
                     
                     <a id="disconnectD" href="./disconect" ><b>Desconectar</b></a>
@@ -50,16 +48,19 @@
                     </div>
                     <div class="numTarjeta">
                         <label>Número de tarjeta</label>
-                        <input id="numeroTarjeta" name="numTarjeta" type="number" placeholder="Debe contener 16 dígitos">
+                        <input id="numeroTarjeta" name="numTarjeta" type="number" placeholder="Debe contener 16 dígitos"
+                        pattern="^[0-9]{16}$">
                     </div>
                     <div class="caducidad">
                         <label>Fecha de caducidad</label>
-                        <input id="cadTarjeta" name="cadTarjeta" placeholder="01-2022">
+                        <input id="cadTarjeta" name="cadTarjeta" placeholder="01-2022"
+                        pattern="^[0-9]{2}-[0-9]{2}$">
                     </div>
 
                     <div class="codigo">
                         <label>CVV</label>
-                        <input id="cod" type="number" name="cvv" placeholder="111">
+                        <input id="cod" type="number" name="cvv" placeholder="111"
+                        pattern="^[0-9]{3}$">
                     </div>
 
                     <div class="pagar">

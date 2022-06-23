@@ -40,6 +40,9 @@
     <main>
         <form action="/login" method="POST">
             <div class="formulario">
+                <%   try{if (registrado) {%>
+                    <p id="mensajeCorrecto"><b>Registrado correctamente</b></p>
+                <% } }catch (e){console.log(e)} %>
                 <fieldset id="formularioM">
 
                     <legend>INICIO DE SESIóN</legend>
@@ -51,17 +54,21 @@
                         <div class="campo">
                             <label>Email</label>
                             <input id="emailLoginS" type="email" placeholder="Introduce tu email Ej:02sergioconde@gmail.com" name="emailus"
-                           >
+                             pattern="^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$">
                         </div>
 
                         <div class="campo">
                             <label>Contraseña</label>
                             <input id="passwordLoginS" type="password" placeholder="Introduce tu contraseña Ej:Aa1-sergio"
-                                name="contrasenaus">
+                                name="contrasenaus" pattern= pattern="^(?=^.{6,}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*">
+                                
                         </div>
                         <style type="text/css" media="screen">
                             #mensajeAlerta{
                                 color: red;
+                                       }
+                            #mensajeCorrecto{
+                                color: rgb(43, 209, 43);
                             }
                         </style>
                         <%   try{if (!loginmal) {%>

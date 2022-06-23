@@ -94,82 +94,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="funciones1"><span class="type-signature">(constant) </span>funciones1<span class="type-signature"> :<a href="global.html#registrar">registrar</a></span></h4>
-
-
-
-
-<div class="description">
-    Esta son las constantes:
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><a href="global.html#registrar">registrar</a></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -180,7 +104,7 @@
     
 
     
-    <h4 class="name" id="confirmarLogin"><span class="type-signature"></span>confirmarLogin<span class="signature">(emailLogin, contrasenaLogin, rows)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="confirmarLogin"><span class="type-signature"></span>confirmarLogin<span class="signature">(emailLogin, contrasenaLogin, rows)</span><span class="type-signature"> &rarr; {true}</span></h4>
     
 
     
@@ -188,7 +112,7 @@
 
 
 <div class="description">
-    funcion confirmarLogincofirma el login del usuario.
+    Funcion confirmarLogin: esta función tiene tres parametros fundamentales que tomamos paraconfirmar el login y son:  emailLogin, contrasenaLogin y rows.  Si el ususario y contraseña coinciden con el usuario y contraseña introducidos en el input, el ususario tiene acceso al espacio personal y demás.Hay que mencionar que la contraseña está encriptada con SHA1 de SQL.
 </div>
 
 
@@ -276,7 +200,7 @@
             <td class="type">
             
                 
-<span class="param-type">json</span>
+<span class="param-type">string</span>
 
 
             
@@ -327,7 +251,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line87">line 87</a>
+        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -352,6 +276,24 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">true</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -363,7 +305,7 @@
     
 
     
-    <h4 class="name" id="precio"><span class="type-signature"></span>precio<span class="signature">(peso, alto, largo)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="precio"><span class="type-signature"></span>precio<span class="signature">(peso, alto, largo, ancho)</span><span class="type-signature"> &rarr; {int}</span></h4>
     
 
     
@@ -371,7 +313,7 @@
 
 
 <div class="description">
-    funcion preciocalcula el precio del paquete.
+    Funcion precio: esta función tiene 4 parametros fundamentales peso,alto,largo y ancho.  Sirve para calcular el coste de cada paquete que se realiza.
 </div>
 
 
@@ -413,7 +355,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">int</span>
 
 
             
@@ -436,7 +378,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">int</span>
 
 
             
@@ -459,7 +401,30 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ancho</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
 
 
             
@@ -510,7 +475,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line143">line 143</a>
+        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line172">line 172</a>
     </li></ul></dd>
     
 
@@ -546,7 +511,7 @@
     </dt>
     <dd>
         
-<span class="param-type">number</span>
+<span class="param-type">int</span>
 
 
     </dd>
@@ -564,7 +529,7 @@
     
 
     
-    <h4 class="name" id="registrar"><span class="type-signature"></span>registrar<span class="signature">(dni, email, emails)</span><span class="type-signature"> &rarr; {boolean|boolean}</span></h4>
+    <h4 class="name" id="registrar"><span class="type-signature"></span>registrar<span class="signature">(dni, email, emails)</span><span class="type-signature"> &rarr; {true|false}</span></h4>
     
 
     
@@ -572,7 +537,7 @@
 
 
 <div class="description">
-    funcion registrar
+    Funcion registrar: esta función tiene tres parametros fundamentales que tomamos para validar pero tambien hemos metido una comprobación de DNI real para que un usuario con un unico DNI pueda tener varias cuentas, como es el caso del CIF y las empresas.
 </div>
 
 
@@ -711,7 +676,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line44">line 44</a>
+        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -747,7 +712,7 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">true</span>
 
 
     </dd>
@@ -763,7 +728,7 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">false</span>
 
 
     </dd>
@@ -781,7 +746,7 @@
     
 
     
-    <h4 class="name" id="todoUsuario"><span class="type-signature"></span>todoUsuario<span class="signature">(email, rows)</span><span class="type-signature"> &rarr; {int}</span></h4>
+    <h4 class="name" id="todoUsuario"><span class="type-signature"></span>todoUsuario<span class="signature">(email, rows)</span><span class="type-signature"></span></h4>
     
 
     
@@ -789,7 +754,7 @@
 
 
 <div class="description">
-    funcion todoUsuarioGuarda en login 3 el usuario.
+    Funcion todoUsuario: esta función tiene dos parametros fundamentales email y rows.
 </div>
 
 
@@ -854,7 +819,7 @@
             <td class="type">
             
                 
-<span class="param-type">json</span>
+<span class="param-type">string</span>
 
 
             
@@ -905,7 +870,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line117">line 117</a>
+        <a href="funciones.js.html">funciones.js</a>, <a href="funciones.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -930,24 +895,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">int</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -969,13 +916,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#confirmarLogin">confirmarLogin</a></li><li><a href="global.html#funciones1">funciones1</a></li><li><a href="global.html#precio">precio</a></li><li><a href="global.html#registrar">registrar</a></li><li><a href="global.html#todoUsuario">todoUsuario</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#confirmarLogin">confirmarLogin</a></li><li><a href="global.html#precio">precio</a></li><li><a href="global.html#registrar">registrar</a></li><li><a href="global.html#todoUsuario">todoUsuario</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 20 2022 16:53:17 GMT+0200 (hora de verano de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jun 23 2022 10:31:19 GMT+0200 (hora de verano de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>

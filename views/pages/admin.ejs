@@ -51,7 +51,8 @@
                     <div class="campo">
                         <label>Email</label>
                         <input id="emailRegistroS" type="email" name="emailBorrado"
-                            placeholder="Introduce el correo a borrar">
+                            placeholder="Introduce el correo a borrar"
+                            pattern="^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$">
                     </div>
 
                     <div class="borrar usuario" id="borrarUsuario">
@@ -79,7 +80,8 @@
                         <div class="campo">
                             <label>DNI</label>
                             <input id="DNIRegistroS" type="text" name="dniAct"
-                                placeholder="Introduce tu DNI ej. 12345678A">
+                                placeholder="Introduce tu DNI ej. 12345678A"
+                                pattern="(^[0-9]{8})([-]?)([A-Za-z]{1})$">
                         </div>
 
 
@@ -87,13 +89,14 @@
                             <label>Teléfono</label>
                             <input id="telefoRegistroS" type="tel" name="telefonoAct"
                                 placeholder="Introduce tu Número ej. 681081123"
-                                pattern = "/[0-9]{9}/">
+                                pattern = "^[0-9]{9}">
                         </div>
 
 
                         <div class="campo">
                             <label>Email</label>
-                            <input id="emailRegistroS" type="email" name="emailAct" placeholder="Introduce tu email">
+                            <input id="emailRegistroS" type="email" name="emailAct" placeholder="Introduce tu email"
+                            pattern="^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,4}$">
                         </div>
 
                         <div class="campo">
@@ -117,7 +120,8 @@
                         <div class="campo">
                             <label>Contraseña</label>
                             <input id="contrasena" type="text" name="contrasenaAct"
-                                placeholder="Introduce tu contraseña">
+                                placeholder="Introduce tu contraseña"
+                                pattern="^(?=^.{6,}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*">
                         </div>
 
                         <div class="enviar" id="mensajeErrorS">
@@ -184,7 +188,8 @@
                             <div class="campo">
                                 <label>Código Postal</label>
                                 <input id="codigoPostal_origen" type="number" name="codigoPostalOrigen"
-                                    placeholder="Introduce tu CP">
+                                    placeholder="Introduce tu CP"
+                                    pattern="^[0-9]{5}">
                             </div>
                             <div class="enviar">
                                 <button type="submit" class="boton">Actualizar</button>
@@ -225,20 +230,21 @@
                                 <label>Telefono destinatario</label>
                                 <input id="telefono_destino" name="telefonoDestinatario" type="text"
                                     placeholder="Introduce el teléfono del destinatario"
-                                    pattern = "/[0-9]{9}/">
+                                    pattern = "^[0-9]{9}">
                             </div>                            
 
                             <div class="campo">
                                 <label>Direccion</label>
                                 <input id="direccion_origen" type="text" name="direccionDestino"
                                     placeholder="Introduce tu Dirección"
-                                    pattern="/[a-zA-Z0-9]{300}/">
+                                    pattern="[a-zA-Z0-9]{300}">
                             </div>
 
                             <div class="campo">
                                 <label>Código Postal</label>
                                 <input id="codigoPostal_origen" type="number" name="codigoPostalDestino"
-                                    placeholder="Introduce tu CP">
+                                    placeholder="Introduce tu CP"
+                                    pattern="^[0-9]{5}">
                             </div>
 
 
@@ -270,15 +276,15 @@
                     <input type="number" id="pes" name="pesoAct" placeholder="Ej: 5" required>
                 </div>
                 <div class="campo">
-                    <label>Alto (cm)</label>
+                    <label>Alto (m)</label>
                     <input type="number" id="alt" name="altoAct" placeholder="Ej: 60" required>
                 </div>
                 <div class="campo">
-                    <label>Largo (cm)</label>
+                    <label>Largo (m)</label>
                     <input type="number" id="larg" name="largoAct" placeholder="Ej: 60" required>
                 </div>
                 <div class="campo">
-                    <label>Ancho (cm)</label>
+                    <label>Ancho (m)</label>
                     <input type="number" id="anch" name="anchoAct" placeholder="Ej: 30" required>
                 </div>
                 <div class="enviar">
